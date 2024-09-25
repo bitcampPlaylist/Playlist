@@ -22,7 +22,7 @@
         <!-- 상단바 -->
         <div class="row">
             <div class="col-12 top-bar bg-light p-3 d-flex justify-content-between">
-                <a class="navbar-brand" href="#">네비바(GNB)</a>
+                <a class="navbar-brand" href="#">프로그램 로고</a>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="검색창" aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">검색</button>
