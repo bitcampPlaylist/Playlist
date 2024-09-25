@@ -22,11 +22,12 @@
 	
 	<div id="controlsWrapper">
 		<div id="songController">
-			<i class="bi bi-shuffle"></i>
-			<i class="bi bi-skip-start"></i>
-			<i class="bi bi-play-circle"></i>
-			<i class="bi bi-skip-end"></i>
-			<i class="bi bi-repeat"></i>
+			<i class="bi bi-shuffle" id="shuffleBtn"></i>
+			<i class="bi bi-skip-start" id="prevSongBtn"></i>
+			<i class="bi bi-play-circle" id="playBtn"></i>
+			<i class="bi bi-pause-circle" id="pauseBtn" style="display: none;"></i>
+			<i class="bi bi-skip-end" id="nextSongBtn"></i>
+			<i class="bi bi-repeat" id="repeatBtn"></i>
 		</div>
 	
 		<div id="timeController">
@@ -41,7 +42,36 @@
 		<i class="bi bi-volume-down"></i>
 		<input type="range" min="1" max="100" value="99" class="volumeSlider" onchange="setVolume()">
 	</div>
-	
 </div>
+
+<audio id="audioPlayer" src="../music/maps.mp3"></audio>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+//재생-일시정지 버튼 활성화
+$(function(){
+	const audioPlayer = $('#audioPlayer')[0];
+	
+	$('#playBtn').click('change', function(){
+		audioPlayer.play();
+		$('#playBtn').toggle();
+    	$('#pauseBtn').toggle();
+	});
+	
+	$('#pauseBtn').click('change', function(){
+		audioPlayer.pause();
+		$('#playBtn').toggle();
+    	$('#pauseBtn').toggle();
+    	
+	});
+});
+
+$(function(){
+	
+});
+
+
+</script>
 </body>
 </html>
