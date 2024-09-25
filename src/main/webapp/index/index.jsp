@@ -7,6 +7,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/common.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#signup-btn").click(function(){
+                $("#main-content").load("../member/register.jsp");
+            });
+        });
+    </script>
+    
 </head>
 <body>
  <div class="container-fluid">
@@ -18,7 +27,7 @@
                     <input class="form-control me-2" type="search" placeholder="검색창" aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">검색</button>
                     <a href="#" class="btn btn-outline-primary">로그인</a>
-                    <a href="#" class="btn btn-outline-secondary ms-2">회원가입</a>
+                    <button id="signup-btn" class="btn btn-outline-secondary ms-2" >회원가입</button>
                 </form>
             </div>
         </div>
@@ -35,11 +44,10 @@
                 </nav>
             </div>
 
-            <!-- 메인 콘텐츠 -->
-            <div class="col-md-10 content-area p-3">
-                <h5>최신 노래 리스트 화면</h5>
-                <p>이곳에 메인 콘텐츠가 표시됩니다.</p>
-            </div>
+        <!-- 메인 콘텐츠 -->
+	    <div id="main-content" class="col-md-10 content-area p-3">
+	        <!-- 여기에 regist.jsp가 로드됩니다. -->
+	    </div>
         </div>
 
         <!-- 하단바(음악 재생 버튼) -->

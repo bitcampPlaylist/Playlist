@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+    <h2>회원가입</h2>
+    <form action="registerProcess.jsp" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Sign Up">
+    </form>
 </body>
 </html>
