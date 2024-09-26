@@ -49,29 +49,24 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-//재생-일시정지 버튼 활성화
-$(function(){
-	const audioPlayer = $('#audioPlayer')[0];
-	
-	$('#playBtn').click('change', function(){
-		audioPlayer.play();
-		$('#playBtn').toggle();
-    	$('#pauseBtn').toggle();
+	//재생-일시정지 버튼 활성화
+	$(function() {
+		const audioPlayer = $('#audioPlayer')[0];
+
+		$('#playBtn').click('change', function() {
+			audioPlayer.play();
+			$('#playBtn').toggle();
+			$('#pauseBtn').toggle();
+		});
+
+		$('#pauseBtn').click('change', function() {
+			audioPlayer.pause();
+			$('#playBtn').toggle();
+			$('#pauseBtn').toggle();
+
+		});
 	});
 	
-	$('#pauseBtn').click('change', function(){
-		audioPlayer.pause();
-		$('#playBtn').toggle();
-    	$('#pauseBtn').toggle();
-    	
-	});
-});
-
-$(function(){
-	
-});
-
-
 </script>
 </body>
 </html>
