@@ -47,8 +47,8 @@
 
 		<!-- volumeController -->
 		<div id="volumeController">
-			<i class="bi bi-list"><a href="#"></a></i> <i
-				class="bi bi-volume-down"></i>
+			<i class="bi bi-list" id="playlistBtn"></i> 
+			<i class="bi bi-volume-down"></i>
 			<div id="volumeSliderContainer">
 				<span id="volumeBar"> <span id="volumeFill"></span>
 				</span> <input id="volumeSlider" type="range" min="0" max="100" value="50">
@@ -57,6 +57,17 @@
 	</div>
 
 	<audio id="audioPlayer" src=""></audio>
+	
+	<!-- Playlist Modal (initially hidden) -->
+    <div id="playlistModal" class="playlist-modal">
+        <div class="playlist-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Playlist</h2>
+            <ul id="playlist">
+                <!-- Playlist items will be dynamically populated -->
+            </ul>
+        </div>
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -66,46 +77,46 @@ $(function() {
 	
 	//노래 (로컬)
     const songs = [
-    	{
-    		path:  '../music/iCantDream.mp3',
+     	{
+    		path:  'http://localhost:8080/playlist2/music/iCantDream.mp3',
     		displayName: 'I Can\'t Dream',
-    		cover: '../image/anonymousartists.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/anonymousartists.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:   '../music/thatsNotIt.mp3',
+    		path:   'http://localhost:8080/playlist2/music/thatsNotIt.mp3',
     		displayName: '그게 아니라..',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/youJumpIJump.mp3',
+    		path:  'http://localhost:8080/playlist2/music/youJumpIJump.mp3',
     		displayName: 'you jump, i jump',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
-    	},
+    	},	
     	{
-    		path:  '../music/magneticRemix.mp3',
+    		path:  'http://localhost:8080/playlist2/music/magneticRemix.mp3',
     		displayName: 'Magnetic(Remix)',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'Illit, MINDA',
     	},
     	{
-    		path:  '../music/someoneElse.mp3',
+    		path:  'http://localhost:8080/playlist2/music/someoneElse.mp3',
     		displayName: 'SomeOneelSe',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/shutUp.mp3',
+    		path:  'http://localhost:8080/playlist2/music/shutUp.mp3',
     		displayName: 'shut up!',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/drift.mp3',
+    		path:  'http://localhost:8080/playlist2/music/drift.mp3',
     		displayName: 'Drift',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     ];
@@ -254,6 +265,24 @@ $(function() {
             $('#timeFill').css('width', fillWidth + '%'); // Update timeFill width
         }, 1000); // Update every second
     }
+	 
+ 	// Show playlist modal when the playlist button is clicked
+    $('#playlistBtn').click(function() {
+        $('#playlistModal').css('display', 'block');  // Show the modal
+    });
+
+    // Hide the modal when the close button is clicked
+    $('.closeBtn').click(function() {
+        $('#playlistModal').css('display', 'none');  // Hide the modal
+    });
+
+    // Hide modal if user clicks outside the modal content
+    $(window).click(function(event) {
+        if ($(event.target).is('#playlistModal')) {
+            $('#playlistModal').css('display', 'none');  // Hide the modal
+        }
+    });
+
 });
 
 </script>
