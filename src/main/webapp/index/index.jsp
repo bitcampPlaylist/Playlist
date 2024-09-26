@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <!-- 사이드바 및 메인 콘텐츠 -->
+       <!-- 사이드바 및 메인 콘텐츠 -->
         <div class="row">
             <!-- 사이드바 -->
             <div class="col-md-2 sidebar bg-light p-3">
@@ -35,11 +35,10 @@
                 </nav>
             </div>
 
-            <!-- 메인 콘텐츠 -->
-            <div class="col-md-10 content-area p-3">
-                <h5>최신 노래 리스트 화면</h5>
-                <p><img src="../image/anonymousartists.jpg" width="100" height="100" /></p>
-            </div>
+        <!-- 메인 콘텐츠 -->
+	    	<div id="main-content" class="col-md-10 content-area p-3">
+	        <!-- 메인페이지에 jsp가 로드되는 위치 -->
+	    	</div>
         </div>
 
         <!-- 하단바(음악 재생 버튼) -->
