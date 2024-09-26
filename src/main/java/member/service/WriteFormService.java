@@ -9,7 +9,7 @@ public class WriteFormService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		return "/member/writeForm.jsp";
+		return "/member/register.jsp";
 	}
 
 }

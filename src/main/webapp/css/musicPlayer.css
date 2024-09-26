@@ -1,0 +1,215 @@
+/* General Layout */
+#musicPlayerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 50px;  /* Fixed height for the entire music player */
+    box-sizing: border-box;  /* Ensures padding fits within the 100px height */
+}
+
+/* Song Info */
+#songInfo {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-left: 5px;
+}
+
+#albumArt {
+    width: 40px;  /* Reduced by 10x10px as requested */
+    height: 40px;
+    overflow: hidden;
+    border-radius: 5px;  /* Rounded corners for album art */
+}
+
+#albumArt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.songDetails {
+    margin-left: 10px;
+}
+
+#songName {
+    font-size: 10px;   /* Smaller font size for song name */
+    font-weight: bold;
+    margin-bottom: 3px; /* More vertical space between song and artist */
+}
+
+#artistName {
+    font-size: 9px;   /* Smaller font size for artist name */
+}
+
+#musicPlayerContainer a {
+	text-decoration: none;
+	color: black;
+}
+
+#musicPlayerContainer a:hover {
+	text-decoration: underline;
+}
+
+/* Controls Wrapper */
+#controlsWrapper {
+    display: flex;
+    flex-direction: column;  /* Stack songController and timeController vertically */
+    align-items: center;     /* Center both songController and timeController */
+    flex: 1;
+}
+
+/* Song Controller */
+#songController {
+	position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    z-index: 10;
+}
+
+#songController i {
+    font-size: 18px;   /* Smaller icon size to fit within height */
+    cursor: pointer;
+    padding: 3px;
+    margin-top: 5px;
+    z-index: 11;
+}
+
+#shuffleBtn {
+    cursor: pointer;
+    font-size: 24px; /* Adjust size as needed */
+    color: #000; /* Default color */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#shuffleBtn.active {
+    color: green; /* Change the color to green when active */
+    text-shadow: 0 0 10px green; /* Glow effect */
+}
+#repeatBtn {
+    cursor: pointer;
+    font-size: 24px; /* Adjust size as needed */
+    color: #000; /* Default color */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#repeatBtn.active {
+    color: green; /* Change the color to green when active */
+    text-shadow: 0 0 10px green; /* Glow effect */
+}
+/* Time Controller */
+#timeController {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    z-index: 5;
+}
+
+#timeController #currentTime, 
+#timeController #totalTime {
+    font-size: 10px;   /* Adjust time font size */
+    margin: 0 5px;
+}
+
+/* Volume Controller */
+#volumeController {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+#volumeController i {
+    font-size: 18px;
+    padding: 3px;
+}
+
+/* Seek Slider (modern style) */
+
+#timeController{
+    background-color: #808080;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    position: relative;
+    height: 3px;
+}
+
+#timeController #progressTime {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+#timeController #musicDuration {
+    display: flex;
+    justify-content: space-between; /* Position elements on opposite sides */
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: -15px; /* Adjust to position it above or within the bar */
+}
+
+/* Style for time texts */
+#musicDuration #currentTime,
+#musicDuration #totalTime {
+    font-size: 10px;
+    margin: 0;
+}
+
+#musicDuration #currentTime {
+    margin-left: 5px;  /* Adjust left margin for spacing */
+}
+
+#musicDuration #totalTime {
+    margin-right: 5px; /* Adjust right margin for spacing */
+}
+
+
+/* Volume Slider (same modern style as seek slider) */
+.volumeSlider {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 1px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.volumeSlider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;  /* Remove the thumb (handle) */
+    height: 0px; /* Remove the thumb (handle) */
+}
+
+.volumeSlider::-moz-range-thumb {
+    width: 0px;  /* Remove the thumb (handle) */
+    height: 0px; /* Remove the thumb (handle) */
+}
+
+.volumeSlider::-ms-thumb {
+    width: 0px;  /* Remove the thumb (handle) */
+    height: 0px; /* Remove the thumb (handle) */
+}
