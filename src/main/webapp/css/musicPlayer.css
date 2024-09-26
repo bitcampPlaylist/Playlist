@@ -1,4 +1,6 @@
-/* General Layout */
+body{
+	background-color: #fff;
+}
 #musicPlayerContainer {
     display: flex;
     justify-content: space-between;
@@ -102,29 +104,108 @@
     color: green; /* Change the color to green when active */
     text-shadow: 0 0 10px green; /* Glow effect */
 }
+
 /* Time Controller */
+#timeSliderContainer {
+    position: relative;
+    width: 100px; /* Set this to your desired width */
+}
+/* Time Controller */
+#timeSliderContainer {
+    position: relative;
+    width: 500px; /* Increase the width of the time slider container */
+    margin: 0 10px; /* Add some horizontal margin for spacing */
+}
+
 #timeController {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    margin-top: 2px;
-    margin-bottom: 8px;
-    z-index: 5;
+    justify-content: space-between;
+    flex: 1;
+    position: relative;
 }
 
-#timeController #currentTime, 
-#timeController #totalTime {
-    font-size: 10px;   /* Adjust time font size */
-    margin: 0 5px;
+/* Music Duration */
+#musicDuration {
+    display: flex;
+    justify-content: space-between; /* Space between current and total time */
+    align-items: center; /* Center align texts vertically */
+    width: 500px; /* Set a fixed width for the duration section */
+    margin-right: 10px; /* Add some space between the duration and the slider */
+    margin-bottom: 10px;
 }
+
+#musicDuration #currentTime,
+#musicDuration #totalTime {
+    font-size: 10px; /* Keep the time font size */
+    margin: 0 5px; /* Margin for spacing */
+}
+
+/* Updated styles for the time slider */
+#timeSlider {
+    -webkit-appearance: none; /* Remove default styling */
+    width: 100%; /* Full width of the container */
+    height: 0; /* Set to 0 to hide the slider */
+    position: absolute; /* Allow absolute positioning */
+    left: 0; /* Align to the left */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Center correctly */
+    z-index: 2; /* Above the time bar */
+}
+
+/* Custom thumb styling for time slider */
+#timeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    width: 8px; /* Make thumb larger for visibility */
+    height: 8px; /* Increase thumb height */
+    background-color: transparent; /* Make the thumb visible */
+    border-radius: 50%; /* Rounded shape */
+    cursor: pointer; /* Pointer cursor */
+    top: 10px;
+    position: relative; /* Allow top positioning */
+}
+#timeSlider::-webkit-slider-thumb:hover {
+    background-color: black;
+}
+
+/* Time Bar */
+#timeBar {
+    position: absolute;
+    left: 0;
+    top: 50%; /* Centers it vertically relative to the slider */
+    transform: translateY(-50%);
+    width: 100%;
+    height: 3px;
+    background-color: #d3d3d3;  /* Light grey */
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#timeFill {
+    display: block;
+    width: 0%; /* Initial fill (matches the default slider value of 50) */
+    height: 100%;
+    background-color: #808080; /* Dark grey */
+    transition: width 0.1s ease-in-out;
+    position: absolute; /* Added to ensure it fills correctly within the bar */
+    left: 0; /* Starts from the left */
+    top: 0; /* Aligns to the top of the bar */
+}
+
 
 /* Volume Controller */
+#volumeSliderContainer {
+    position: relative;
+    width: 100px; /* Set this to your desired width */
+}
+
 #volumeController {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex: 1;
+    position: relative;
 }
 
 #volumeController i {
@@ -132,84 +213,61 @@
     padding: 3px;
 }
 
-/* Seek Slider (modern style) */
-
-#timeController{
-    background-color: #808080;
-    border-radius: 5px;
+#volumeSliderContainer {
     display: flex;
     align-items: center;
-    width: 100%;
-    margin-top: 2px;
-    margin-bottom: 8px;
     position: relative;
-    height: 3px;
+    width: 100px;  /* Width of the volume bar */
+    margin-left: 10px;
 }
 
-#timeController #progressTime {
-    background-color: #e6e6e6;
-    border-radius: 5px;
-    height: 100%;
-    width: 0%;
-    transition: width 0.1s linear;
-}
-
-#timeController #musicDuration {
-    display: flex;
-    justify-content: space-between; /* Position elements on opposite sides */
-    align-items: center;
-    width: 100%;
-    position: relative;
-    top: -15px; /* Adjust to position it above or within the bar */
-}
-
-/* Style for time texts */
-#musicDuration #currentTime,
-#musicDuration #totalTime {
-    font-size: 10px;
-    margin: 0;
-}
-
-#musicDuration #currentTime {
-    margin-left: 5px;  /* Adjust left margin for spacing */
-}
-
-#musicDuration #totalTime {
-    margin-right: 5px; /* Adjust right margin for spacing */
-}
-
-
-/* Volume Slider (same modern style as seek slider) */
-.volumeSlider {
+#volumeSlider {
     -webkit-appearance: none;
-    width: 80px;
-    height: 1px;
-    background: #ddd;
+    width: 100%;
+    height: 3px;
     border-radius: 5px;
     outline: none;
-    transition: background 0.3s;
+    background-color: transparent;  /* Hide the default bar */
+    position: relative;
+    z-index: 2;  /* Ensure it's above the volume bar */
 }
 
-.volumeSlider::-webkit-slider-runnable-track {
+/* Custom thumb styling for volume slider */
+#volumeSlider::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Remove default styling */
+    width: 8px; /* Keep the width for accessibility */
+    height: 8px; /* Keep the height for accessibility */
+    background-color: transparent; /* Make the thumb invisible */
+    border-radius: 50%; /* Keep the rounded shape */
+    cursor: pointer; /* Keep the pointer cursor */
+    box-shadow: none; /* No shadow */
+    transition: none; /* No transition */
+}
+/* Hover effect: Glow around the thumb only when hovered */
+#volumeSlider::-webkit-slider-thumb:hover {
+    background-color: black;
+}
+
+#volumeBar {
+    position: absolute;
+    left: 0;
+    top: 50%; /* Centers it vertically relative to the slider */
+    transform: translateY(-50%);
     width: 100%;
-    height: 5px;
-    background: #ddd;
+    height: 3px;
+    background-color: #d3d3d3;  /* Light grey */
     border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.volumeSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 0px;  /* Remove the thumb (handle) */
-    height: 0px; /* Remove the thumb (handle) */
-}
-
-.volumeSlider::-moz-range-thumb {
-    width: 0px;  /* Remove the thumb (handle) */
-    height: 0px; /* Remove the thumb (handle) */
-}
-
-.volumeSlider::-ms-thumb {
-    width: 0px;  /* Remove the thumb (handle) */
-    height: 0px; /* Remove the thumb (handle) */
+#volumeFill {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #808080; /* Dark grey */
+    transition: width 0.1s ease-in-out;
+    position: absolute; /* Added to ensure it fills correctly within the bar */
+    left: 0; /* Starts from the left */
+    top: 0; /* Aligns to the top of the bar */
 }
