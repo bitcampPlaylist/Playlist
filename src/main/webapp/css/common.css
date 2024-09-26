@@ -1,3 +1,45 @@
+/* 다크모드 스타일 */
+body.dark-mode {
+    background-color: #121212;
+    color: #f8f9fa;
+}
+
+body.dark-mode .bg-dark {
+    background-color: #121212 !important;
+}
+
+body.dark-mode .text-light {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .btn-outline-light {
+    border-color: #f8f9fa;
+    color: #f8f9fa;
+}
+
+body.dark-mode .btn-outline-light:hover {
+    background-color: #f8f9fa;
+    color: #121212;
+}
+
+body.dark-mode input.form-control {
+    background-color: #333;
+    color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+}
+
+body.dark-mode a {
+    color: #f8f9fa;
+}
+
+body.dark-mode a:hover {
+    color: #007bff;
+}
+
+body.dark-mode .navbar-brand {
+    color: #f8f9fa;
+}
+
 /* 페이지 전체 높이 및 기본 스타일 */
 body, html {
     margin: 0;

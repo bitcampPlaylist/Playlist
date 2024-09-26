@@ -1,28 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html lang="ko">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Music Layout</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/common.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#signup-btn").click(function(){
-                $("#main-content").load("../member/register.jsp");
-            });
-        });
-    </script>
-    
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/header.jsp" %>
+
  <div class="container-fluid">
         <!-- 상단바 -->
         <div class="row">
             <div class="col-12 top-bar bg-light p-3 d-flex justify-content-between">
-                <a class="navbar-brand" href="#">네비바(GNB)</a>
+                <a class="navbar-brand" href="${ pageContext.request.contextPath }/index/index.do">프로그램 로고</a>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="검색창" aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">검색</button>
@@ -46,7 +31,7 @@
 
         <!-- 메인 콘텐츠 -->
 	    <div id="main-content" class="col-md-10 content-area p-3">
-	        <!-- 여기에 regist.jsp가 로드됩니다. -->
+	        <!-- 메인페이지에 jsp가 로드되는 위치 -->
 	    </div>
         </div>
 
@@ -69,6 +54,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+
+<%@ include file="/footer.jsp" %>
+
