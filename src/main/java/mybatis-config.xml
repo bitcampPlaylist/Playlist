@@ -6,7 +6,6 @@
 	<properties resource="db.properties" />
 
 	<typeAliases>
-		<typeAlias type="board.bean.BoardDTO" alias="board"/>
  		<typeAlias type="member.bean.MemberDTO" alias="member"/>
 	</typeAliases>
 	
@@ -23,8 +22,6 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="mapper/boardMapper.xml"/>
-		<mapper resource="mapper/imageboardMapper.xml"/>
 		<mapper resource="mapper/memberMapper.xml"/>
 	</mappers>
 </configuration>

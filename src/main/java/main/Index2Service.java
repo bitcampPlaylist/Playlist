@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
-public class IndexService implements CommandProcess {
+public class Index2Service implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		return "/index/index.jsp";
+		return "/index/main.jsp";
 	}
 
 }

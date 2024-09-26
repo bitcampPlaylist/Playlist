@@ -1,6 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/header.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+}
+
+#writeForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
+	text-align: left;
+}
+
+#writeForm div {
+	color: red;
+	font-size: 8pt;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
 
 <form name="writeForm" id="writeForm">
       
@@ -21,7 +50,7 @@
 	    <tr>
 	        <th>아이디</th>
 	        <td>
-	        	<input type="text" name="register_id" id="register_id" size="30" placeholder="아이디 입력">
+	        	<input type="text" name="id" id="id" size="30" placeholder="아이디 입력">
 	        	<input type="hidden" id="check" value="">
 	        	<div id="idDiv"></div>
 	        </td>
@@ -103,4 +132,21 @@
 	</table>
 </form>
 
-<%@ include file="/footer.jsp" %>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js/member.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
