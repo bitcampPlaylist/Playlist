@@ -15,7 +15,7 @@
 <div id="musicPlayerContainer">
 	<div id="songInfo">
 		<div id="albumArt"><img src="../image/anonymousartists.jpg" /></div>
-		<div class="songDetails">
+<!-- 		<div class="songDetails"> -->
 			<div id="songName"><a href="#">I Can't Dream</a></div>
 			<div id="artistName"><a href="#">MINDA</a></div>
 		</div>
@@ -44,7 +44,7 @@
 		<i class="bi bi-list"><a href="#"></a></i>
 		<i class="bi bi-volume-down"></i>
 		<input type="range" min="1" max="100" value="99" class="volumeSlider" onchange="setVolume()">
-	</div>
+	</div> 
 </div>
 
 <audio id="audioPlayer" src="../music/iCantDream.mp3"></audio>
