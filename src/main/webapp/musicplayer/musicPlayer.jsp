@@ -30,43 +30,178 @@
 			<i class="bi bi-repeat" id="repeatBtn"></i>
 		</div>
 	
-		<div id="timeController">
-			<div id="currentTime">00:00</div>
-			<input type="range" min="1" max="100" value="0" class="seekSlider" onchange="seekTo()">
-			<div id="totalTime">03:29</div>
+		<div id="timeController">	
+			<div id="progressTime"></div>
+			<div id="musicDuration">
+				<span id="currentTime">00:00</span>
+				<span id="totalTime">00:00</span>	
+			</div>
 		</div>
 	</div>
 	
 	<div id="volumeController">
-		<i class="bi bi-list"></i>
+		<i class="bi bi-list"><a href="#"></a></i>
 		<i class="bi bi-volume-down"></i>
 		<input type="range" min="1" max="100" value="99" class="volumeSlider" onchange="setVolume()">
 	</div>
 </div>
 
-<audio id="audioPlayer" src="../music/maps.mp3"></audio>
+<audio id="audioPlayer" src="../music/iCantDream.mp3"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-	//재생-일시정지 버튼 활성화
-	$(function() {
-		const audioPlayer = $('#audioPlayer')[0];
-
-		$('#playBtn').click('change', function() {
-			audioPlayer.play();
-			$('#playBtn').toggle();
-			$('#pauseBtn').toggle();
-		});
-
-		$('#pauseBtn').click('change', function() {
-			audioPlayer.pause();
-			$('#playBtn').toggle();
-			$('#pauseBtn').toggle();
-
-		});
-	});
+$(function() {
+	const audioPlayer = $('#audioPlayer')[0];
 	
+	//노래 (로컬)
+    const songs = [
+    	{
+    		path:  '../music/iCantDream.mp3',
+    		displayName: 'I Can\'t Dream',
+    		cover: '../image/anonymousartists.jpg',
+    		artist: 'MINDA',
+    	},
+    	{
+    		path:   '../music/thatsNotIt.mp3',
+    		displayName: '그게 아니라..',
+    		cover: '../image/ooo.jpg',
+    		artist: 'MINDA',
+    	},
+    	{
+    		path:  '../music/youJumpIJump.mp3',
+    		displayName: 'you jump, i jump',
+    		cover: '../image/ooo.jpg',
+    		artist: 'MINDA',
+    	},
+    	{
+    		path:  '../music/magneticRemix.mp3',
+    		displayName: 'Magnetic(Remix)',
+    		cover: '../image/ooo.jpg',
+    		artist: 'Illit, MINDA',
+    	},
+    	{
+    		path:  '../music/someoneElse.mp3',
+    		displayName: 'SomeOneelSe',
+    		cover: '../image/ooo.jpg',
+    		artist: 'MINDA',
+    	},
+    	{
+    		path:  '../music/shutUp.mp3',
+    		displayName: 'shut up!',
+    		cover: '../image/ooo.jpg',
+    		artist: 'MINDA',
+    	},
+    	{
+    		path:  '../music/drift.mp3',
+    		displayName: 'Drift',
+    		cover: '../image/ooo.jpg',
+    		artist: 'MINDA',
+    	},
+    ];
+	
+    let currentSongIndex = 0;
+    let isShuffle = false;
+    let isRepeat = false;  
+    let playedSongs = [];  
+    
+    //음악 플레이어 정보 업데이트
+    function updateSongInfo() {
+        const currentSong = songs[currentSongIndex];
+        
+        $('#albumArt img').attr('src', currentSong.cover);
+        $('#songName a').text(currentSong.displayName);
+        $('#artistName a').text(currentSong.artist);      
+		audioPlayer.src = currentSong.path;
+    }
+
+    $('#playBtn').click(function() {
+        audioPlayer.play();
+        $('#playBtn').hide();
+        $('#pauseBtn').show();
+    });
+	
+    $('#pauseBtn').click(function() {
+        audioPlayer.pause();
+        $('#playBtn').show();
+        $('#pauseBtn').hide();
+    });
+	
+    //다음 노래 버튼 
+    $('#nextSongBtn').click(function() {
+        if (isRepeat) {
+            //반복 function if문
+            audioPlayer.src = songs[currentSongIndex].path;
+        } else {
+            if (isShuffle) {
+                //셔플 function if문
+                if (playedSongs.length === songs.length) {
+                    //모든 노래 플레이 -> reset
+                    playedSongs = [];
+                }
+                //재생안된 노래중 선택
+                do {
+                    currentSongIndex = Math.floor(Math.random() * songs.length);
+                } while (playedSongs.includes(currentSongIndex));
+
+                //재생된 노래 (array)에 넣기
+                playedSongs.push(currentSongIndex);
+            } else {
+                //셔플 X 반복 X
+                currentSongIndex++;
+                if (currentSongIndex >= songs.length) {
+                    currentSongIndex = 0;
+                }
+            }
+        }
+        //노래 정보 업데이트
+        updateSongInfo();
+        audioPlayer.play();
+        $('#playBtn').hide();
+        $('#pauseBtn').show();
+    });
+    
+    //이전 노래 버튼
+    $('#prevSongBtn').click(function() {
+        currentSongIndex--;
+        if (currentSongIndex < 0) {
+            currentSongIndex = songs.length - 1;
+        }
+
+        //노래 정보 업데이트
+        updateSongInfo();
+        audioPlayer.play();
+        $('#playBtn').hide();
+        $('#pauseBtn').show();
+    });
+
+    //셔플 function
+    $('#shuffleBtn').click(function() {
+        isShuffle = !isShuffle; //셔플 on
+        $(this).toggleClass('active'); //css 초록색 빛
+        
+        //셔플 on -> 반복 off
+        if (isShuffle) {
+            isRepeat = false;
+            $('#repeatBtn').removeClass('active'); //css 초록색 빛 없애기
+        }
+    });
+
+    //반복 function
+    $('#repeatBtn').click(function() {
+        isRepeat = !isRepeat; //반복 on
+        $(this).toggleClass('active'); //css 초록색 빛
+
+        //반복 on -> 셔플 off
+        if (isRepeat) {
+            isShuffle = false;
+            $('#shuffleBtn').removeClass('active'); //css 초록색 빛 없애기
+        }
+    });
+    
+    updateSongInfo();
+});
+
 </script>
 </body>
 </html>

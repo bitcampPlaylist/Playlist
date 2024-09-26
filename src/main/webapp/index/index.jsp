@@ -38,7 +38,7 @@
             <!-- 메인 콘텐츠 -->
             <div class="col-md-10 content-area p-3">
                 <h5>최신 노래 리스트 화면</h5>
-                <p>이곳에 메인 콘텐츠가 표시됩니다.</p>
+                <p><img src="../image/anonymousartists.jpg" width="100" height="100" /></p>
             </div>
         </div>
 
