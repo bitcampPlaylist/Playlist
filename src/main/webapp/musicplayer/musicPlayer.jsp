@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,14 @@
 <meta http-equiv="X-UA=Compatible" content="IE-edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/musicPlayer.css">
+<link rel="stylesheet" href="<c:url value='/css/musicPlayer.css' />">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <div id="musicPlayerContainer">
 	<div id="songInfo">
 		<div id="albumArt"><img src="../image/anonymousartists.jpg" /></div>
-		<div class="songDetails">
+<!-- 		<div class="songDetails"> -->
 			<div id="songName"><a href="#">I Can't Dream</a></div>
 			<div id="artistName"><a href="#">MINDA</a></div>
 		</div>
@@ -43,7 +44,7 @@
 		<i class="bi bi-list"><a href="#"></a></i>
 		<i class="bi bi-volume-down"></i>
 		<input type="range" min="1" max="100" value="99" class="volumeSlider" onchange="setVolume()">
-	</div>
+	</div> 
 </div>
 
 <audio id="audioPlayer" src="../music/iCantDream.mp3"></audio>
