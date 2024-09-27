@@ -19,5 +19,13 @@
 	<!-- 공통적으로 불러올 JS 파일 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="${ pageContext.request.contextPath }/js/common.js" defer></script>
+
+	<!-- nav -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/nav2.css">
+	
+	<!-- DJ -->
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/card.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/djToday.css">
 </head>
 <body>

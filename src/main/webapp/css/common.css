@@ -14,6 +14,7 @@ body, html{
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container-fluid {
@@ -39,6 +40,9 @@ body, html{
 /* 사이드바 스타일 */
 .sidebar {
     height: calc(100vh - 150px); /* 상단바와 하단바를 제외한 높이 */
+    max-width: 264px;
+    min-width: 264px;
+
     border-right: 1px solid black;
     background-color: #f8f9fa;
 }

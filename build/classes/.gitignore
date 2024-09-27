@@ -1,3 +1,7 @@
-/musicplayer/
+/com/
+/db.properties
+/dj/
+/main/
 /mapper/
-/songlist/
+/member/
+/mybatis-config.xml
