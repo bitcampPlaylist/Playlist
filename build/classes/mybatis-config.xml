@@ -8,7 +8,7 @@
 	<typeAliases>
  		<typeAlias type="member.bean.MemberDTO" alias="member"/>
  		<typeAlias type="songlist.bean.SonglistDTO" alias="songList"/>
- 		<typeAlias type="musicplayer.bean.Song" alias="song"/>
+ 		<typeAlias type="musicplayer.bean.Song" alias="song2"/>
  		<typeAlias type="songupload.bean.SonguploadDTO" alias="song"/>
 	</typeAliases>
 	
