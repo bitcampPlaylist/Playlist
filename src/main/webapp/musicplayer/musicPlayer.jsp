@@ -28,7 +28,7 @@
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
-			<div id="albumArt"><img src=""></div>
+			<div id="albumArt"><img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-142/storage${SonglistDTO.song_albumart }"></div>
 			<div class="songDetails">
 				<div id="songName"><a href="#"></a></div>
 				<div id="artistName"><a href="#"></a></div>
@@ -88,7 +88,7 @@
 		</div>
 	</div>
 	
-	<audio id="audioPlayer" src=""></audio>
+	<audio id="audioPlayer" src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-142/storage${SonglistDTO.song_file_name }"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
