@@ -12,6 +12,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+
+	<div id="playlistPopup">
+    <h1>나의 Playlist</h1>
+		<ul id="playlist">
+   			<li><a href="#">song1</a></li>
+   			<li><a href="#">song2</a></li>
+   			<li><a href="#">song3</a></li>
+   			<li><a href="#">song4</a></li>
+		</ul>
+	</div>
+	
+	<input type="hidden" name="song_id" value="${SonglistDTO.song_id }" />	
+	
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
@@ -47,15 +60,34 @@
 
 		<!-- volumeController -->
 		<div id="volumeController">
-			<i class="bi bi-list"><a href="#"></a></i> <i
-				class="bi bi-volume-down"></i>
+			<i class="bi bi-file-music" id="nowPlayingBtn"></i>
+			<i class="bi bi-list" id="playlistBtn"></i> 
+			<i class="bi bi-volume-down"></i>
 			<div id="volumeSliderContainer">
 				<span id="volumeBar"> <span id="volumeFill"></span>
 				</span> <input id="volumeSlider" type="range" min="0" max="100" value="50">
 			</div>
 		</div>
 	</div>
-
+	
+	<div id="nowPlayingPopup" style="display: none">
+		<div id="nowPlayingContainer">
+		   <div id="playlistAlbumArt"></div>
+            <div id="playlistSongInfo">
+	            <div id="playlistSongName"></div>
+	            <div id="playlistArtistName"></div>
+	        </div>
+	        <div id="playlistController">
+				<i class="bi bi-shuffle" id="shuffleBtnPl"></i> 
+				<i class="bi bi-skip-start" id="prevSongBtnPl"></i> 
+				<i class="bi bi-play-circle" id="playBtnPl"></i> 
+				<i class="bi bi-pause-circle" id="pauseBtnPl" style="display: none;"></i>
+				<i class="bi bi-skip-end" id="nextSongBtnPl"></i> 
+				<i class="bi bi-repeat" id="repeatBtnPl"></i>
+	        </div>
+		</div>
+	</div>
+	
 	<audio id="audioPlayer" src=""></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -66,46 +98,46 @@ $(function() {
 	
 	//노래 (로컬)
     const songs = [
-    	{
-    		path:  '../music/iCantDream.mp3',
+     	{
+    		path:  'http://localhost:8080/playlist2/music/iCantDream.mp3',
     		displayName: 'I Can\'t Dream',
-    		cover: '../image/anonymousartists.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/anonymousartists.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:   '../music/thatsNotIt.mp3',
+    		path:   'http://localhost:8080/playlist2/music/thatsNotIt.mp3',
     		displayName: '그게 아니라..',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/youJumpIJump.mp3',
+    		path:  'http://localhost:8080/playlist2/music/youJumpIJump.mp3',
     		displayName: 'you jump, i jump',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
-    	},
+    	},	
     	{
-    		path:  '../music/magneticRemix.mp3',
+    		path:  'http://localhost:8080/playlist2/music/magneticRemix.mp3',
     		displayName: 'Magnetic(Remix)',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'Illit, MINDA',
     	},
     	{
-    		path:  '../music/someoneElse.mp3',
+    		path:  'http://localhost:8080/playlist2/music/someoneElse.mp3',
     		displayName: 'SomeOneelSe',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/shutUp.mp3',
+    		path:  'http://localhost:8080/playlist2/music/shutUp.mp3',
     		displayName: 'shut up!',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     	{
-    		path:  '../music/drift.mp3',
+    		path:  'http://localhost:8080/playlist2/music/drift.mp3',
     		displayName: 'Drift',
-    		cover: '../image/ooo.jpg',
+    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
     ];
@@ -254,6 +286,62 @@ $(function() {
             $('#timeFill').css('width', fillWidth + '%'); // Update timeFill width
         }, 1000); // Update every second
     }
+	 
+    $('#playlistBtn').click(function(event) {
+        event.stopPropagation(); // Prevent the click from propagating to the window
+
+        const playlistBtnPosition = $(this).offset();
+        const popupHeight = $('#playlistPopup').outerHeight();
+        const popupWidth = $('#playlistPopup').outerWidth();
+
+        // Set the popup's position to be directly above the button
+        $('#playlistPopup').css({
+            'top': playlistBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
+            'right': playlistBtnPosition.right - popupWidth - 0 + 'px', // 10px left of the button
+            'display': 'block' // Show the popup
+        });
+    });
+
+    // Hide the popup when clicking outside of it
+    $(window).click(function(event) {
+        if (!$(event.target).closest('#playlistPopup, #playlistBtn').length) {
+            $('#playlistPopup').css('display', 'none');  // Hide the popup if click is outside
+        }
+    });
+    
+    
+    // Prevent hiding the modal when clicking inside the popup
+    $('#nowPlayingPopup').click(function(event) {
+        event.stopPropagation(); // Prevent click from closing the popup
+    });
+    
+    $('#nowPlayingBtn').click(function(event) {
+        event.stopPropagation(); // Prevent the click from propagating to the window
+
+        const nowPlayingBtnPosition = $(this).offset();
+        const popupHeight = $('#nowPlayingPopup').outerHeight();
+        const popupWidth = $('#nowPlayingPopup').outerWidth();
+
+        // Set the popup's position to be directly above the button
+        $('#nowPlayingPopup').css({
+            'top': nowPlayingBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
+            'left': nowPlayingBtnPosition.left - popupWidth - 10 + 'px', // 10px left of the button
+            'display': 'block' // Show the popup
+        });
+    });
+
+    // Hide the popup when clicking outside of it
+    $(window).click(function(event) {
+        if (!$(event.target).closest('#nowPlayingPopup, #nowPlayingBtn').length) {
+            $('#nowPlayingPopup').css('display', 'none');  // Hide the popup if click is outside
+        }
+    });
+    
+    // Prevent hiding the modal when clicking inside the popup
+    $('#nowPlayingPopup').click(function(event) {
+        event.stopPropagation(); // Prevent click from closing the popup
+    });
+ 
 });
 
 </script>

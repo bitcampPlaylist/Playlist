@@ -21,8 +21,8 @@ body{
 }
 
 #albumArt {
-    width: 40px;  /* Reduced by 10x10px as requested */
-    height: 40px;
+    width: 50px;  /* Reduced by 10x10px as requested */
+    height: 50px;
     overflow: hidden;
     border-radius: 5px;  /* Rounded corners for album art */
 }
@@ -38,13 +38,13 @@ body{
 }
 
 #songName {
-    font-size: 10px;   /* Smaller font size for song name */
+    font-size: 14px;   /* Smaller font size for song name */
     font-weight: bold;
     margin-bottom: 3px; /* More vertical space between song and artist */
 }
 
 #artistName {
-    font-size: 9px;   /* Smaller font size for artist name */
+    font-size: 12px;   /* Smaller font size for artist name */
 }
 
 #musicPlayerContainer a {
@@ -75,9 +75,9 @@ body{
 }
 
 #songController i {
-    font-size: 18px;   /* Smaller icon size to fit within height */
+    font-size: 25px;   /* Smaller icon size to fit within height */
     cursor: pointer;
-    padding: 3px;
+    padding: 8px;
     margin-top: 5px;
     z-index: 11;
 }
@@ -137,7 +137,7 @@ body{
 
 #musicDuration #currentTime,
 #musicDuration #totalTime {
-    font-size: 10px; /* Keep the time font size */
+    font-size: 15px; /* Keep the time font size */
     margin: 0 5px; /* Margin for spacing */
 }
 
@@ -161,7 +161,6 @@ body{
     background-color: transparent; /* Make the thumb visible */
     border-radius: 50%; /* Rounded shape */
     cursor: pointer; /* Pointer cursor */
-    top: 10px;
     position: relative; /* Allow top positioning */
 }
 #timeSlider::-webkit-slider-thumb:hover {
@@ -209,8 +208,8 @@ body{
 }
 
 #volumeController i {
-    font-size: 18px;
-    padding: 3px;
+    font-size: 25px;
+    padding: 10px;
 }
 
 #volumeSliderContainer {
@@ -270,4 +269,56 @@ body{
     position: absolute; /* Added to ensure it fills correctly within the bar */
     left: 0; /* Starts from the left */
     top: 0; /* Aligns to the top of the bar */
+}
+
+#playlistPopup {
+ 	display: none; 
+	position: absolute;
+	width: 300px; 
+    height: 797px;
+	float: right;
+	transition: 0.5s ease;
+	z-index: 99;
+	right: 0;
+	top: 100px; 
+	border-radius: 5px;
+	padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-out;
+}
+
+#playlistPopup h1 {
+	font-weight: 800;
+	text-align: right;
+	padding: 10px 0;
+	padding-right: 30px;
+	pointer-events: none;
+}
+
+#playlistPopup li {
+	list-style: none;
+}
+#playlistPopup li a {
+	font-weight: 500;
+	padding: 5px 0;
+	display: block;
+	text-transform: capitalize;
+	text-decoration: none;
+	transition: 0.2s ease-out;
+}
+
+#nowPlayingPopup {
+ 	display: none; 
+	position: absolute;
+	width: 1300px; 
+    height: 797px;
+	float: right;
+	transition: 0.5s ease;
+	z-index: 99;
+	left: 0;
+	top: 100px; 
+	border-radius: 5px;
+	padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-out;
 }

@@ -35,12 +35,14 @@
         <!-- 메인 콘텐츠 -->
 	    <div id="main-content" class="content-wrapper col-md-10 content-area p-3">
 	        <!-- 메인페이지에 jsp가 로드되는 위치 -->
-	    </div>
+	        <a href="#" class="songArt" data-song-id="1"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="200" height="200"></a>
+	    </div>	
         </div>
 
         <!-- 하단바(음악 재생 버튼) -->
         <%@ include file="/footer.jsp" %>
     </div>
+<script src="${ pageContext.request.contextPath }/js/musicPlayer.js"></script>
 </body>
 </html>
 
