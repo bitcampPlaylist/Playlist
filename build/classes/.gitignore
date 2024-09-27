@@ -1,2 +1,7 @@
+/com/
+/db.properties
+/dj/
 /main/
+/mapper/
 /member/
+/mybatis-config.xml

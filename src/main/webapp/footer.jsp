@@ -8,6 +8,6 @@
     
     <!-- nav -->
     <script src="https://kit.fontawesome.com/dec34c372f.js" crossorigin="anonymous"></script>
-    <script src="../js/nav2.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/nav2.js"></script>
 </body>
 </html>
