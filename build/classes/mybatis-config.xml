@@ -6,9 +6,9 @@
 	<properties resource="db.properties" />
 
 	<typeAliases>
-		<typeAlias type="board.bean.BoardDTO" alias="board"/>
-		<typeAlias type="imageboard.bean.ImageboardDTO" alias="imageboard"/>
-		<typeAlias type="member.bean.MemberDTO" alias="member"/>
+ 		<typeAlias type="member.bean.MemberDTO" alias="member"/>
+ 		<typeAlias type="songlist.bean.SonglistDTO" alias="songList"/>
+ 		<typeAlias type="musicplayer.bean.Song" alias="song"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -24,9 +24,9 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="mapper/boardMapper.xml"/>
-		<mapper resource="mapper/imageboardMapper.xml"/>
 		<mapper resource="mapper/memberMapper.xml"/>
+		<mapper resource="mapper/songlistMapper.xml"/>
+		<mapper resource="mapper/musicplayerMapper.xml"/>
 	</mappers>
 </configuration>
 

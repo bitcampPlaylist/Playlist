@@ -24,7 +24,7 @@
 						 , addr2
 						 , logtime)
         			VALUES(#{name}
-        				 , #{id}
+        				 , #{register_id}
         				 , #{pwd}
         				 , #{gender}
         				 , #{email1}
