@@ -12,6 +12,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+
+	<div id="playlistPopup">
+    <h1>나의 Playlist</h1>
+		<ul id="playlist">
+   			<li><a href="#">song1</a></li>
+   			<li><a href="#">song2</a></li>
+   			<li><a href="#">song3</a></li>
+   			<li><a href="#">song4</a></li>
+		</ul>
+	</div>
+	
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
@@ -47,6 +58,7 @@
 
 		<!-- volumeController -->
 		<div id="volumeController">
+			<i class="bi bi-file-music" id="nowPlayingBtn"></i>
 			<i class="bi bi-list" id="playlistBtn"></i> 
 			<i class="bi bi-volume-down"></i>
 			<div id="volumeSliderContainer">
@@ -55,19 +67,28 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<div id="nowPlayingPopup" style="display: none">
+		<div id="nowPlayingContainer">
+		   <div id="playlistAlbumArt"></div>
+            <div id="playlistSongInfo">
+	            <div id="playlistSongName"></div>
+	            <div id="playlistArtistName"></div>
+	        </div>
+	        <div id="playlistController">
+				<i class="bi bi-shuffle" id="shuffleBtnPl"></i> 
+				<i class="bi bi-skip-start" id="prevSongBtnPl"></i> 
+				<i class="bi bi-play-circle" id="playBtnPl"></i> 
+				<i class="bi bi-pause-circle" id="pauseBtnPl" style="display: none;"></i>
+				<i class="bi bi-skip-end" id="nextSongBtnPl"></i> 
+				<i class="bi bi-repeat" id="repeatBtnPl"></i>
+	        </div>
+		</div>
+	</div>
+	
 	<audio id="audioPlayer" src=""></audio>
 	
 	<!-- Playlist Modal (initially hidden) -->
-    <div id="playlistModal" class="playlist-modal">
-        <div class="playlist-content">
-            <span class="closeBtn">&times;</span>
-            <h2>Playlist</h2>
-            <ul id="playlist">
-                <!-- Playlist items will be dynamically populated -->
-            </ul>
-        </div>
-    </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -266,23 +287,61 @@ $(function() {
         }, 1000); // Update every second
     }
 	 
- 	// Show playlist modal when the playlist button is clicked
-    $('#playlistBtn').click(function() {
-        $('#playlistModal').css('display', 'block');  // Show the modal
+    $('#playlistBtn').click(function(event) {
+        event.stopPropagation(); // Prevent the click from propagating to the window
+
+        const playlistBtnPosition = $(this).offset();
+        const popupHeight = $('#playlistPopup').outerHeight();
+        const popupWidth = $('#playlistPopup').outerWidth();
+
+        // Set the popup's position to be directly above the button
+        $('#playlistPopup').css({
+            'top': playlistBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
+            'right': playlistBtnPosition.right - popupWidth - 0 + 'px', // 10px left of the button
+            'display': 'block' // Show the popup
+        });
     });
 
-    // Hide the modal when the close button is clicked
-    $('.closeBtn').click(function() {
-        $('#playlistModal').css('display', 'none');  // Hide the modal
-    });
-
-    // Hide modal if user clicks outside the modal content
+    // Hide the popup when clicking outside of it
     $(window).click(function(event) {
-        if ($(event.target).is('#playlistModal')) {
-            $('#playlistModal').css('display', 'none');  // Hide the modal
+        if (!$(event.target).closest('#playlistPopup, #playlistBtn').length) {
+            $('#playlistPopup').css('display', 'none');  // Hide the popup if click is outside
         }
     });
+    
+    
+    // Prevent hiding the modal when clicking inside the popup
+    $('#nowPlayingPopup').click(function(event) {
+        event.stopPropagation(); // Prevent click from closing the popup
+    });
+    
+    $('#nowPlayingBtn').click(function(event) {
+        event.stopPropagation(); // Prevent the click from propagating to the window
 
+        const nowPlayingBtnPosition = $(this).offset();
+        const popupHeight = $('#nowPlayingPopup').outerHeight();
+        const popupWidth = $('#nowPlayingPopup').outerWidth();
+
+        // Set the popup's position to be directly above the button
+        $('#nowPlayingPopup').css({
+            'top': nowPlayingBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
+            'left': nowPlayingBtnPosition.left - popupWidth - 10 + 'px', // 10px left of the button
+            'display': 'block' // Show the popup
+        });
+    });
+
+    // Hide the popup when clicking outside of it
+    $(window).click(function(event) {
+        if (!$(event.target).closest('#nowPlayingPopup, #nowPlayingBtn').length) {
+            $('#nowPlayingPopup').css('display', 'none');  // Hide the popup if click is outside
+        }
+    });
+    
+    // Prevent hiding the modal when clicking inside the popup
+    $('#nowPlayingPopup').click(function(event) {
+        event.stopPropagation(); // Prevent click from closing the popup
+    });
+ 
 });
 
 </script>
