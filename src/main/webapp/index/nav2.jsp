@@ -19,6 +19,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="#" id="navDj" class="sidebar-link">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            DJ
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <!--  data-bs-target="#pages" : id가 pages인 요소를 타겟으로 설정, ria-controls="pages": id가 pages인 요소를 제어 -->
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
                             <i class="fa-regular fa-file-lines pe-2"></i>
@@ -34,25 +40,6 @@
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">cryoidi</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-targ
-                        aria-expanded="false" aria-controls="pages">
-                            <i class="fa-regular fa-file-lines pe-2"></i>
-                            aaaaaaa
-                        </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Analytics</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Ecommerce</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Crypto</a>
                             </li>
                         </ul>
                     </li>
