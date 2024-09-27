@@ -28,7 +28,11 @@
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
-			<div id="albumArt"><img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-142/storage${SonglistDTO.song_albumart }"></div>
+			<div id="albumArt">
+			<div id="albumart_src">
+			</div>
+			<!--  <img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/album/${SonglistDTO.song_albumart }"> -->
+			</div>
 			<div class="songDetails">
 				<div id="songName"><a href="#"></a></div>
 				<div id="artistName"><a href="#"></a></div>
@@ -88,7 +92,8 @@
 		</div>
 	</div>
 	
-	<audio id="audioPlayer" src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-142/storage${SonglistDTO.song_file_name }"></audio>
+	<!-- <audio id="audioPlayer" src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/music/${SonglistDTO.song_file_name }"></audio>  -->
+	<audio id="audioPlayer"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -96,7 +101,7 @@
 $(function() {
 	const audioPlayer = $('#audioPlayer')[0];
 	
-	//노래 (로컬)
+/* 	//노래 (로컬)
     const songs = [
      	{
     		path:  'http://localhost:8080/playlist2/music/iCantDream.mp3',
@@ -140,7 +145,7 @@ $(function() {
     		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
     		artist: 'MINDA',
     	},
-    ];
+    ]; */
 	
     let currentSongIndex = 0;
     let isShuffle = false;
