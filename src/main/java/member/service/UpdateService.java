@@ -29,7 +29,7 @@ public class UpdateService implements CommandProcess {
 		
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setName(name);
-		memberDTO.setId(id);
+		memberDTO.setRegister_id(id);
 		memberDTO.setPwd(pwd);
 		memberDTO.setGender(gender);
 		memberDTO.setEmail1(email1);

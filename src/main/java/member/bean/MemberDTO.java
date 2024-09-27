@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class MemberDTO {
 	private String name;
-	private String id;
+	private String register_id;
 	private String pwd;
 	private String gender;
 	private String email1;
