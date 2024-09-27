@@ -40,6 +40,8 @@
 
         <!-- 메인 콘텐츠 -->
 	    <div id="main-content" class="content-wrapper col-md-10 content-area p-3">
+	    	<a href="#" class="songArt" data-song-id="1"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="200" height="200"></a>
+
 	        <!-- 메인페이지에 jsp가 로드되는 위치 -->
 	    </div>
         </div>
@@ -51,6 +53,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- nav -->
     <script src="https://kit.fontawesome.com/dec34c372f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/musicPlayer.js"></script>
     <script src="../js/nav2.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 	<typeAliases>
  		<typeAlias type="member.bean.MemberDTO" alias="member"/>
  		<typeAlias type="songlist.bean.SonglistDTO" alias="songList"/>
+ 		<typeAlias type="musicplayer.bean.Song" alias="song"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -24,7 +25,8 @@
 	
 	<mappers>
 		<mapper resource="mapper/memberMapper.xml"/>
-		<mapper resource="mapper/songList.xml"/>
+		<mapper resource="mapper/songlistMapper.xml"/>
+		<mapper resource="mapper/musicplayerMapper.xml"/>
 	</mappers>
 </configuration>
 

@@ -23,13 +23,15 @@
 		</ul>
 	</div>
 	
+	<input type="hidden" name="song_id" value="${SonglistDTO.song_id }" />	
+	
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
-			<div id="albumArt"><img src=""></div>
+			<div id="albumArt"><img src="http://localhost:8080/playlist2/image/${SonglistDTO.song_albumart}"></div>
 			<div class="songDetails">
-				<div id="songName"><a href="#"></a></div>
-				<div id="artistName"><a href="#"></a></div>
+				<div id="songName"><a href="#">${SonglistDTO.song_name}</a></div>
+				<div id="artistName"><a href="#">${SonglistDTO.song_artist}</a></div>
 			</div>
 		</div>
 
@@ -86,9 +88,7 @@
 		</div>
 	</div>
 	
-	<audio id="audioPlayer" src=""></audio>
-	
-	<!-- Playlist Modal (initially hidden) -->
+	<audio id="audioPlayer" src="http://localhost:8080/playlist2/music/${SonglistDTO.song_file_name}"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
