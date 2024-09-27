@@ -19,6 +19,7 @@
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="검색창" aria-label="Search">
                     <button class="btn btn-outline-success me-2" type="submit">검색</button>
+	                <a href="#" id="song-upload-btn" class="btn btn-outline-success">업로드</a>
                     <a href="#" class="btn btn-outline-success">로그인</a>
                     <a href="#" id="signup-btn" class="btn btn-outline-success">회원가입</a>
                 </form>

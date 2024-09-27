@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:include page="/musicplayer/musicPlayer.jsp"></jsp:include>
     <!-- 공통적으로 불러올 JS 파일 -->

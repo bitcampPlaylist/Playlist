@@ -89,9 +89,11 @@
                 <input type="text" class="form-control mt-2" id="addr2" name="addr2" placeholder="상세주소">
             </div>
 
-           	<div class="mb-3">
-               	<button type="button" class="btn btn-custom" onclick="checkWrite()">회원가입</button>
-               	<button type="reset" class="btn btn-outline-secondary">다시작성</button>
+           	<div class="register_btn_div">
+           		<span>
+               		<button type="button" class="btn btn-outline-success" onclick="checkWrite()">회원가입</button>
+               		<button type="reset" class="btn btn-outline-secondary">다시작성</button>
+            	</span>
             </div>
         </form>
     </div>
@@ -154,7 +156,7 @@ function checkWrite() {
 			data: $('#writeForm').serialize(),
 			success: function(){
 				alert('회원가입을 축하합니다.');
-				location.href = '/playlist2/index.jsp';
+				location.href = '/playlist2/index.do';
 			},
 			error: function(e){
 				console.log(e);

@@ -101,6 +101,7 @@ button {
     height: 40px;
     display: flex;
     justify-content: center;
+    font-size: 0.9em;
     align-items: center;
     white-space: nowrap;
 }
