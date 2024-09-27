@@ -9,7 +9,6 @@ $('.songArt').click(function(){
         dataType: 'json', // JSON 응답을 기대
         success: function(data){
             // data는 SonglistDTO 객체로 가정
-            alert('노래를 성공적으로 불러왔습니다.');
             $('#albumArt img').attr('src', data.song_albumart);
             $('#songName a').text(data.song_name);
             $('#artistName a').text(data.song_artist);
