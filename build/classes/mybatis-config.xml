@@ -5,6 +5,10 @@
 <configuration>
 	<properties resource="db.properties" />
 
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
 	<typeAliases>
  		<typeAlias type="member.bean.MemberDTO" alias="member"/>
  		<typeAlias type="songlist.bean.SonglistDTO" alias="songList"/>
@@ -29,7 +33,9 @@
 		<mapper resource="mapper/musicplayerMapper.xml"/>
 		<mapper resource="mapper/songuploadMapper.xml"/>
 	</mappers>
+
 </configuration>
+
 
 
 

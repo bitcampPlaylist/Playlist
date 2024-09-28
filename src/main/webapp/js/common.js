@@ -15,8 +15,32 @@ $(document).ready(function() {
 	    $("#main-content").load("/playlist2/songupload/songUploadForm.do");
 	});
 
+	$(document).on("click", "#login-btn", function(event) {
+	    event.preventDefault(); // 기본 동작 방지 (폼 제출 방지)
+	    $("#main-content").load("/playlist2/member/loginForm.do");
+	});
+	
+	
+	$(document).on("click", "#logout-btn", function() {
+		// AJAX 요청
+		$.ajax({
+		    url: "/playlist2/member/logout.do",
+		    type: "POST",
+		    success: function() {
+				alert("로그아웃 되었습니다.");
+				document.location.reload();
+		    },
+		    error: function() {
+		        alert("로그아웃 중 오류가 발생했습니다.");
+		    }
+		});
+	});
 	
 });
+
+function register_page_move() {
+	$("#main-content").load("/playlist2/member/register.do");
+}
 
  // AJAX를 통한 폼 전송
 $(document).on("submit", "#songUploadForm", function(event) {

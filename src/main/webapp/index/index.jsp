@@ -18,10 +18,18 @@
                 </a>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="검색창" aria-label="Search">
-                    <button class="btn btn-outline-success me-2" type="submit">검색</button>
-	                <a href="#" id="song-upload-btn" class="btn btn-outline-success">업로드</a>
-                    <a href="#" class="btn btn-outline-success">로그인</a>
-                    <a href="#" id="signup-btn" class="btn btn-outline-success">회원가입</a>
+                    <button class="btn btn-outline-success me-2" type="submit">검색</button>&nbsp;&nbsp;&nbsp;
+                    <c:if test="${sessionScope.memId == 'admin' }">
+	                	<a href="#" id="song-upload-btn" class="btn btn-outline-success">업로드</a>
+	                </c:if>
+                   	<c:if test="${sessionScope.memId != null }">
+                   		<a href="#" id="logout-btn" class="btn btn-outline-success">로그아웃</a>
+					</c:if>
+					<c:if test="${sessionScope.memId == null }">               
+                    	<a href="#" id="login-btn" class="btn btn-outline-success">로그인</a>
+                    	&nbsp;&nbsp;
+                    	<a href="#" id="signup-btn" class="btn btn-outline-success">회원가입</a>
+                    </c:if>
                 </form>
             </div>
         </div>
@@ -53,6 +61,12 @@
         <%@ include file="/footer.jsp" %>
     </div>
 <script src="${ pageContext.request.contextPath }/js/musicPlayer.js"></script>
+<script type="text/javascript">
+function register_page_move() {
+	event.preventDefault(); // 기본 동작 방지 (폼 제출 방지)
+	$("#main-content").load("/playlist2/member/register.do");
+}
+</script>
 </body>
 </html>
 

@@ -3,9 +3,10 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
+
 	<!-- 아이디 중복 체크 -->
 	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
-		select * from SONG_MEMBER where MEMBER_ID=#{id}
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id}
 	</select>
 	
 	<!-- 회원가입 -->
@@ -23,46 +24,47 @@
 						 , MEMBER_ADDRESS1
 						 , MEMBER_ADDRESS2
 						 , MEMBER_REGISTER_DATE)
-        			VALUES(#{name}
-        				 , #{register_id}
-        				 , #{pwd}
-        				 , #{gender}
-        				 , #{email1}
-        				 , #{email2}
-        				 , #{tel1}
-        				 , #{tel2}
-        				 , #{tel3}
-        				 , #{zipcode}
-        				 , #{addr1}
-        				 , #{addr2}
-        				 , now())
+					VALUES(#{member_name}
+					     , #{member_id}
+					     , #{member_pwd}
+					     , #{member_gender}
+					     , #{member_email1}
+					     , #{member_email2}
+					     , #{member_tel1}
+					     , #{member_tel2}
+					     , #{member_tel3}
+					     , #{member_zipcode}
+					     , #{member_addr1}
+					     , #{member_addr2}
+					     , now())
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="java.util.Map" resultType="member">
-		select * from SONG_MEMBER where MEMBER_ID=#{id} and MEMBER_PASSWORD=#{pwd}
+	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id} and MEMBER_PASSWORD=#{member_pwd}
 	</select>
 	
 	<!-- id에 해당하는 정보 가져오기 -->
 	<select id="getMember" parameterType="String" resultType="member">
-		select * from SONG_MEMBER where MEMBER_ID=#{id}
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id}
 	</select>
-	
+
 	<!-- 회원정보수정 -->
 	<update id="update" parameterType="member">
-		update member set name = #{name}
-			            , pwd = #{pwd}
-			            , gender = #{gender}
-			            , email1 = #{email1}
-			            , email2 = #{email2}
-			            , tel1 = #{tel1}
-			            , tel2 = #{tel2}
-			            , tel3 = #{tel3}
-			            , zipcode = #{zipcode}
-			            , addr1 = #{addr1}
-			            , addr2 = #{addr2}
+		update member set name = #{member_name}
+					     , #{member_id}
+					     , #{member_pwd}
+					     , #{member_gender}
+					     , #{member_email1}
+					     , #{member_email2}
+					     , #{member_tel1}
+					     , #{member_tel2}
+					     , #{member_tel3}
+					     , #{member_zipcode}
+					     , #{member_addr1}
+					     , #{member_addr2}
 			            <!-- , logtime = sysdate where id = #{id} -->
-			            , logtime = now() where id = #{id}
+			            , logtime = now() where id = #{member_id}
 	</update>
 </mapper>
 

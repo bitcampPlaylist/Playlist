@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="container">
     <div class="register-container bg-white">
-        <h1 class="form-title">회원가입</h1>
+        <h1 class="form-title"> &#128221;회원가입</h1>
         <form name="writeForm" id="writeForm">
             <!-- 이름과 아이디를 두줄로 배치 -->
             <div class="row mb-3">
@@ -83,7 +83,7 @@
                 <label for="zipcode" class="form-label">주소</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
-                    <button type="button" class="btn btn-outline-secondary" onclick="checkPost(); return false;">우편번호 검색</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="checkPost(); return false;">검색</button>
                 </div>
                 <input type="text" class="form-control mt-2" id="addr1" name="addr1" placeholder="주소" readonly>
                 <input type="text" class="form-control mt-2" id="addr2" name="addr2" placeholder="상세주소">
