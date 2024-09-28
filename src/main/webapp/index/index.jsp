@@ -36,8 +36,16 @@
         <!-- 메인 콘텐츠 -->
 	    <div id="main-content" class="content-wrapper col-md-10 content-area p-3">
 	        <!-- 메인페이지에 jsp가 로드되는 위치 -->
-	        <a href="#" class="songArt" data-song-id="1"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="200" height="200"></a>
-	        <a href="#" class="songArt" data-song-id="9"><img src="http://localhost:8080/playlist2/image/anonymousartists.jpg" width="200" height="200"></a>
+	        <a href="#" class="songArt" data-song-id="1"><img src="http://localhost:8080/playlist2/image/anonymousartists.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="2"><img src="http://localhost:8080/playlist2/image/imperfect.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="3"><img src="http://localhost:8080/playlist2/image/try.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="4"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="5"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="6"><img src="http://localhost:8080/playlist2/image/ooo.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="7"><img src="http://localhost:8080/playlist2/image/magnetic.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="8"><img src="http://localhost:8080/playlist2/image/naye.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	        <a href="#" class="songArt" data-song-id="9"><img src="http://localhost:8080/playlist2/image/vanilla.jpg" width="100" height="100" style="border: 1px solid black"></a>
+	    </div>	
 	    </div>	
         </div>
 

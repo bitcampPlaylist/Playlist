@@ -272,53 +272,56 @@ body{
 }
 
 #playlistPopup {
- 	display: none; 
-	position: absolute;
-	width: 300px; 
-    height: 797px;
-	float: right;
-	transition: 0.5s ease;
-	z-index: 99;
-	right: 0;
-	top: 100px; 
-	border-radius: 5px;
-	padding: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-out;
+    position: absolute;
+    right: 200px; /* Adjust as needed */
+    width: 300px; /* Set the desired width */
+    background-color: white; /* Background color */
+    height: 800px; /* Set the height */
+    border: 1px solid #ccc; /* Border style */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it appears on top */
+    display: none; /* Hidden by default */
+    padding: 10px; /* Padding inside the popup */
+    transform: translateY(10%); /* Start below the button */
+    transition: transform 0.3s ease; /* Smooth transition */
 }
 
-#playlistPopup h1 {
-	font-weight: 800;
-	text-align: right;
-	padding: 10px 0;
-	padding-right: 30px;
-	pointer-events: none;
+#playlist {
+    list-style-type: none; /* Remove bullet points */
+    padding: 10px; /* Remove padding */
 }
 
-#playlistPopup li {
-	list-style: none;
-}
-#playlistPopup li a {
-	font-weight: 500;
-	padding: 5px 0;
-	display: block;
-	text-transform: capitalize;
-	text-decoration: none;
-	transition: 0.2s ease-out;
+#playlist li {
+    margin: 5px 0; /* Spacing between items */
+    padding: 0px;
 }
 
-#nowPlayingPopup {
- 	display: none; 
-	position: absolute;
-	width: 1300px; 
-    height: 797px;
-	float: right;
-	transition: 0.5s ease;
-	z-index: 99;
-	left: 0;
-	top: 100px; 
-	border-radius: 5px;
-	padding: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-out;
+#playlist li a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+}
+
+#playlist li a:hover {
+    color: #007BFF; /* Change color on hover */
+}
+.playlist-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.playlist-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.playlist-item a {
+    font-weight: bold;
+    display: block;
+}
+
+.playlist-item span {
+    color: #666; /* Slightly darker for the artist name */
 }

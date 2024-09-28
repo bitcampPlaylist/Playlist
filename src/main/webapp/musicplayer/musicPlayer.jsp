@@ -14,12 +14,10 @@
 <body>
 
 	<div id="playlistPopup">
-    <h1>나의 Playlist</h1>
+    <h1 style="text-align: center">
+    ~~의 <br>
+    플레이리스트</h1>
 		<ul id="playlist">
-   			<li><a href="#">song1</a></li>
-   			<li><a href="#">song2</a></li>
-   			<li><a href="#">song3</a></li>
-   			<li><a href="#">song4</a></li>
 		</ul>
 	</div>
 	
@@ -64,7 +62,6 @@
 
 		<!-- volumeController -->
 		<div id="volumeController">
-			<i class="bi bi-file-music" id="nowPlayingBtn"></i>
 			<i class="bi bi-list" id="playlistBtn"></i> 
 			<i class="bi bi-volume-down"></i>
 			<div id="volumeSliderContainer">
@@ -74,25 +71,6 @@
 		</div>
 	</div>
 	
-	<div id="nowPlayingPopup" style="display: none">
-		<div id="nowPlayingContainer">
-		   <div id="playlistAlbumArt"></div>
-            <div id="playlistSongInfo">
-	            <div id="playlistSongName"></div>
-	            <div id="playlistArtistName"></div>
-	        </div>
-	        <div id="playlistController">
-				<i class="bi bi-shuffle" id="shuffleBtnPl"></i> 
-				<i class="bi bi-skip-start" id="prevSongBtnPl"></i> 
-				<i class="bi bi-play-circle" id="playBtnPl"></i> 
-				<i class="bi bi-pause-circle" id="pauseBtnPl" style="display: none;"></i>
-				<i class="bi bi-skip-end" id="nextSongBtnPl"></i> 
-				<i class="bi bi-repeat" id="repeatBtnPl"></i>
-	        </div>
-		</div>
-	</div>
-	
-	<!-- <audio id="audioPlayer" src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/music/${SonglistDTO.song_file_name }"></audio>  -->
 	<audio id="audioPlayer"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -101,102 +79,10 @@
 $(function() {
 	const audioPlayer = $('#audioPlayer')[0];
 	
-/* 	//노래 (로컬)
-    const songs = [
-     	{
-    		path:  'http://localhost:8080/playlist2/music/iCantDream.mp3',
-    		displayName: 'I Can\'t Dream',
-    		cover: 'http://localhost:8080/playlist2/image/anonymousartists.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:   'http://localhost:8080/playlist2/music/thatsNotIt.mp3',
-    		displayName: '그게 아니라..',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  'http://localhost:8080/playlist2/music/youJumpIJump.mp3',
-    		displayName: 'you jump, i jump',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'MINDA',
-    	},	
-    	{
-    		path:  'http://localhost:8080/playlist2/music/magneticRemix.mp3',
-    		displayName: 'Magnetic(Remix)',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'Illit, MINDA',
-    	},
-    	{
-    		path:  'http://localhost:8080/playlist2/music/someoneElse.mp3',
-    		displayName: 'SomeOneelSe',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  'http://localhost:8080/playlist2/music/shutUp.mp3',
-    		displayName: 'shut up!',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  'http://localhost:8080/playlist2/music/drift.mp3',
-    		displayName: 'Drift',
-    		cover: 'http://localhost:8080/playlist2/image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    ]; */
-	
-    let currentSongIndex = 0;
-    let isShuffle = false;
-    let isRepeat = false;  
+    let currentSongIndex = 0;  
     let playedSongs = [];
     let timeInterval;
     
-    //음악 플레이어 정보 업데이트
-    function updateSongInfo() {
-        const currentSong = songs[currentSongIndex];
-        $('#albumArt img').attr('src', currentSong.cover);
-        $('#songName a').text(currentSong.displayName);
-        $('#artistName a').text(currentSong.artist);      
-		audioPlayer.src = currentSong.path;
-		
-		$('#currentTime').text('00:00');
-        audioPlayer.onloadedmetadata = function() {
-            const totalDuration = audioPlayer.duration;
-            $('#totalTime').text(formatTime(totalDuration));
-            $('#timeSlider').attr('max', totalDuration);
-        };
-        
-     	// Update the time slider as the song plays
-        $('#timeSlider').off('input').on('input', function() {
-            const value = $(this).val();
-            audioPlayer.currentTime = value; // Set audio currentTimeupdateTimeFill();
-            updateTimeFill();
-        });
-    }
-    
- 	// Format time function
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return String(minutes).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-    }
-
-    $('#playBtn').click(function() {
-        audioPlayer.play();
-        $('#playBtn').hide();
-        $('#pauseBtn').show();
-        startTimeUpdate();
-    });
-	
-    $('#pauseBtn').click(function() {
-        audioPlayer.pause();
-        $('#playBtn').show();
-        $('#pauseBtn').hide();
-        clearInterval(timeInterval); // Clear the interval when paused
-    });
-	
     //다음 노래 버튼 
     $('#nextSongBtn').click(function() {
         if (isRepeat) {
@@ -243,109 +129,9 @@ $(function() {
         $('#pauseBtn').show();
         startTimeUpdate();
     });
-    
-    //셔플 function
-    $('#shuffleBtn').click(function() {
-        isShuffle = !isShuffle; //셔플 on
-        $(this).toggleClass('active'); //css 초록색 빛
-        
-        //셔플 on -> 반복 off
-        if (isShuffle) {
-            isRepeat = false;
-            $('#repeatBtn').removeClass('active'); //css 초록색 빛 없애기
-        }
-    });
-
-    //반복 function
-    $('#repeatBtn').click(function() {
-        isRepeat = !isRepeat; //반복 on
-        $(this).toggleClass('active'); //css 초록색 빛
-
-        //반복 on -> 셔플 off
-        if (isRepeat) {
-            isShuffle = false;
-            $('#shuffleBtn').removeClass('active'); //css 초록색 빛 없애기
-        }
-    });
-    
-    const $volumeSlider = $('#volumeSlider');
-    const $volumeFill = $('#volumeFill');	
- 	// Add an event listener to update the fill width when the slider value changes
-    $volumeSlider.on('input', function() {
-        const volumeValue = $(this).val();  // Get the current slider value (0 to 100)
-        audioPlayer.volume = volumeValue / 100;  // Update the audio volume as well (0 to 1 scale)
-        $volumeFill.css('width', volumeValue + '%');  // Update the fill width based on the thumb position
-    });
- 	
+   
     updateSongInfo();
-    
-	 // Function to update current time and slider
-    function startTimeUpdate() {
-        clearInterval(timeInterval); // Clear previous interval
-        timeInterval = setInterval(() => {
-            $('#currentTime').text(formatTime(audioPlayer.currentTime)); // Update current time display
-            $('#timeSlider').val((audioPlayer.currentTime / audioPlayer.duration) * 100); // Update time slider
-            
-            // Update timeFill width based on currentTime
-            const fillWidth = (audioPlayer.currentTime / audioPlayer.duration) * 100; // Calculate fill width percentage
-            $('#timeFill').css('width', fillWidth + '%'); // Update timeFill width
-        }, 1000); // Update every second
-    }
-	 
-    $('#playlistBtn').click(function(event) {
-        event.stopPropagation(); // Prevent the click from propagating to the window
 
-        const playlistBtnPosition = $(this).offset();
-        const popupHeight = $('#playlistPopup').outerHeight();
-        const popupWidth = $('#playlistPopup').outerWidth();
-
-        // Set the popup's position to be directly above the button
-        $('#playlistPopup').css({
-            'top': playlistBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
-            'right': playlistBtnPosition.right - popupWidth - 0 + 'px', // 10px left of the button
-            'display': 'block' // Show the popup
-        });
-    });
-
-    // Hide the popup when clicking outside of it
-    $(window).click(function(event) {
-        if (!$(event.target).closest('#playlistPopup, #playlistBtn').length) {
-            $('#playlistPopup').css('display', 'none');  // Hide the popup if click is outside
-        }
-    });
-    
-    
-    // Prevent hiding the modal when clicking inside the popup
-    $('#nowPlayingPopup').click(function(event) {
-        event.stopPropagation(); // Prevent click from closing the popup
-    });
-    
-    $('#nowPlayingBtn').click(function(event) {
-        event.stopPropagation(); // Prevent the click from propagating to the window
-
-        const nowPlayingBtnPosition = $(this).offset();
-        const popupHeight = $('#nowPlayingPopup').outerHeight();
-        const popupWidth = $('#nowPlayingPopup').outerWidth();
-
-        // Set the popup's position to be directly above the button
-        $('#nowPlayingPopup').css({
-            'top': nowPlayingBtnPosition.top - popupHeight - 10 + 'px', // 10px space above the button
-            'left': nowPlayingBtnPosition.left - popupWidth - 10 + 'px', // 10px left of the button
-            'display': 'block' // Show the popup
-        });
-    });
-
-    // Hide the popup when clicking outside of it
-    $(window).click(function(event) {
-        if (!$(event.target).closest('#nowPlayingPopup, #nowPlayingBtn').length) {
-            $('#nowPlayingPopup').css('display', 'none');  // Hide the popup if click is outside
-        }
-    });
-    
-    // Prevent hiding the modal when clicking inside the popup
-    $('#nowPlayingPopup').click(function(event) {
-        event.stopPropagation(); // Prevent click from closing the popup
-    });
  
 });
 
