@@ -7,7 +7,7 @@
             <div class="content-wrapper">
                 <div class="a">
                     <div class="djTitleImg" >
-                     a  
+                     
                     </div>            
                 </div>
                 <div>
@@ -103,7 +103,7 @@
             </table>
         </div>
 
-        <!-- paging -->
+        <!-- paging
          <div class="pagination">
             <div><i class="fa-solid fa-chevron-left"></i></div>
             <div>1</div>
@@ -111,6 +111,7 @@
             <div>3</div>
             <div><i class="fa-solid fa-chevron-right"></i></div>
          </div>
+         -->
     </div>
 
 
@@ -119,7 +120,6 @@
 
 
 <!-- script -->
-
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 

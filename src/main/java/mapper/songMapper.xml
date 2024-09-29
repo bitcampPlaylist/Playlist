@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="songSQL">
+	<!-- 아이디 중복 체크 -->
+	<select id="selectDJPlayList" parameterType="int" resultType="song.bean.SongPalylistDTO">
+		select * from song_djplaylist where id=#{id};
+	</select>
+</mapper>
+
+
+
+
+
+
+

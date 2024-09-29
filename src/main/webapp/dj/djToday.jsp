@@ -36,7 +36,7 @@
 							<div class="col-3">
 								<section class="card">
 									<article class="profile">
-										<img class="djplayImg" src="/playlist2/image/blackBG.jpg" alt="DJ PlayList Image"> 
+										<a href=#" id="djToday_1"><img class="djplayImg" src="/playlist2/image/blackBG.jpg" alt="DJ PlayList Image"></a> 
 										<img class="djprofileImg" src="/playlist2/image/anonymousartists.jpg" alt="DJ Profile Image">
 										<h1 class="djTitle">HOT TRENDY: K-POP 신곡</h1>
 									</article>
