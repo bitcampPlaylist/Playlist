@@ -2,13 +2,17 @@ package song.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import song.bean.SongPalylistDTO;
+import song.bean.SongDjList;
+import song.bean.SongPlaylistDTO;
+import songlist.bean.SonglistDTO;
 
 
 public class DjPlaylistDAO {
@@ -31,11 +35,25 @@ public class DjPlaylistDAO {
 	
 //	-------------------------------------------------------
 	
-	public SongPalylistDTO selectDJPlayList(int id) {
+	public SongPlaylistDTO selectDJPlayList(int id) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		SongPalylistDTO songPalylistDTO = sqlSession.selectOne("songSQL.selectDJPlayList", id);
+		SongPlaylistDTO songPlaylistDTO = sqlSession.selectOne("songSQL.selectDJPlayList", id);
 		sqlSession.close();
-		return songPalylistDTO;
+		return songPlaylistDTO;
+	}
+
+	public List<SongDjList> selectSongDjList(int id) {
+		List<SongDjList> list = new ArrayList<SongDjList>();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		list = sqlSession.selectList("songSQL.selectSongDjList", id);
+		sqlSession.close();
+		return list;
+	}
+
+	public SonglistDTO selectSong(int song_id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SonglistDTO songlistDTO = sqlSession.selectOne("songSQL.selectSong", song_id);
+		return songlistDTO;
 	}
 	
 }

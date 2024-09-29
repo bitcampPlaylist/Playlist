@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <div class="container">
         <h2 class="my-4">DJ 플레이리스트 정보</h2>
@@ -12,17 +13,18 @@
                 </div>
                 <div>
                     <div class="mb-3"> <!-- margin : mb-3-->
-                        <h3 for="djTitle" class="form-label">DJ playList 제목(HOT TRENDY: K-POP 신곡)</h3>
-                        <p>DJ아이디(K-POP마스터)</p>
-                        <p>등록일(2024.02.12)</p>
+                        <h3 for="djTitle" class="form-label">${songPalylistDTO.title} </h3>
+                        <p>${songPalylistDTO.member_id} </p>
+                        <p>등록일(2024.02.12)*****</p>
                     </div>
                     <div class="mb-3">
-                        <a href="#" class="badge text-bg-secondary  rounded-pill djTag">#휴식</a>
-                        <a href="#" class="badge text-bg-secondary rounded-pill djTag">#발라드</a>
+                        <a href="#" class="badge text-bg-secondary  rounded-pill djTag">${songPalylistDTO.tag1} </a>
+                        <a href="#" class="badge text-bg-secondary rounded-pill djTag">${songPalylistDTO.tag2} </a>
+                        <a href="#" class="badge text-bg-secondary rounded-pill djTag">${songPalylistDTO.tag3} </a>
                     </div>
                     <div class="mb-3">
                         <i class="fa-regular fa-heart" style="color: rgb(85, 85, 85);"></i>
-                        <span>615</span> <span style="font-size: 10px;">| 200곡</span>
+                        <span>${songPalylistDTO.love}</span> <span style="font-size: 10px;">| 200곡</span>
                     </div>
                 </div>
             </div>
@@ -56,49 +58,20 @@
                         <th>앨범</th>
                     </tr>
                 </thead>
-                <tbody>  
+                <tbody>
+               	<c:forEach var="dto" items="${songlist}">
                     <tr>
                         <td>
                             <input type="checkbox" class="checkbox_item">
                         </td>
-                        <td>1</td>
-                        <td>
-                            <img src="../img/rose.jpg" alt="">
+                        <td>${dto.song_id}</td>
+                        <td style="height: 150px;">
+                            <img src="http://db-pf267-kr.vpc-pub-cdb.ntruss.com:3306/projectMVC/storage/image/${dto.song_albumart}" alt="">f
                         </td>
-                        <td>Hype Boy</td>
-                        <td>NewJeans 1st EP'New Je...</td>
+                        <td>${dto.song_name}</td>
+                        <td>${dto.song_album}</td>
                     </tr>
-                        <td>
-                            <input type="checkbox"class="checkbox_item">
-                        </td>
-                        <td>1</td>
-                        <td>
-                            <img src="../img/rose.jpg" alt="">
-                        </td>
-                        <td>Hype Boy</td>
-                        <td>NewJeans 1st EP'New Je...</td>
-                    </tr>
-                        <td>
-                            <input type="checkbox"class="checkbox_item">
-                        </td>
-                        <td>1</td>
-                        <td>
-                            <img src="../img/rose.jpg" alt="">
-                        </td>
-                        <td>Hype Boy</td>
-                        <td>NewJeans 1st EP'New Je...</td>
-                    </tr>
-                        <td>
-                            <input type="checkbox" class="checkbox_item">
-                        </td>
-                        <td>1</td>
-                        <td>
-                            <img src="../img/rose.jpg" alt="">
-                        </td>
-                        <td>Hype Boy</td>
-                        <td>NewJeans 1st EP'New Je...</td>
-                    </tr>
-
+               	</c:forEach>
                 </tbody>
             </table>
         </div>
