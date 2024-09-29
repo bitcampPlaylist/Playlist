@@ -32,69 +32,38 @@
 					<!-- 이미지 대신 card가 들어갈 부분 -->
 					<div class="row">
 						<%-- <c:forEach var="item" items="${객체 }"> --%>
-						<c:forEach begin="1" end="4" step="1">
+						<c:forEach var="item" items="${list}">
 							<div class="col-3">
 								<section class="card">
 									<article class="profile">
 										<a href=#" id="djToday_1"><img class="djplayImg" src="/playlist2/image/blackBG.jpg" alt="DJ PlayList Image"></a> 
 										<img class="djprofileImg" src="/playlist2/image/anonymousartists.jpg" alt="DJ Profile Image">
-										<h1 class="djTitle">HOT TRENDY: K-POP 신곡</h1>
+										<h1 class="djTitle"> ${item.title} </h1>
 									</article>
 									<ul class="contact">
 										<li>
 											<i class="fa-regular fa-circle-user" style="color: rgb(85, 85, 85);"></i>
-											<span>K-POP마스터</span>
+											<span> ${item.member_id}</span>
 										</li>
 										<li>
-											<i class="fa-regular fa-heart" style="color: rgb(85, 85, 85);"></i> <span>615</span> <span style="font-size: 10px;">| 200곡</span>
+											<i class="fa-regular fa-heart" style="color: rgb(85, 85, 85);"></i> <span> ${item.love}</span> <span style="font-size: 10px;">| 200곡</span>
 										</li>
 									</ul>
 									<nav class="tags">
-										<a href="#" class="badge rounded-pill djTag">#휴식</a> 
-										<a href="#" class="badge rounded-pill djTag">#발라드</a>
-										<a href="#" class="badge rounded-pill djTag">#KPOP</a>
+										<a href="#" class="badge rounded-pill djTag"># ${item.tag1}</a> 
+										<a href="#" class="badge rounded-pill djTag"># ${item.tag2}</a>
+										<a href="#" class="badge rounded-pill djTag"># ${item.tag3}</a>
 									</nav>
 								</section>
 							</div> <!-- div.col-3 -->
 						</c:forEach>
 					</div> <!-- div.row -->
 				</div>
-				<!-- 2 -->
-				<div class="carousel-item">
-					<!-- 이미지 대신 card가 들어갈 부분 -->
-					<div class="row">
-						<%-- <c:forEach var="item" items="${객체 }"> --%>
-						<c:forEach begin="1" end="4" step="1">
-							<div class="col-3">
-								<section class="card">
-									<article class="profile">
-										<img class="djplayImg" src="/playlist2/image/blackBG.jpg" alt="DJ PlayList Image"> 
-										<img class="djprofileImg" src="/playlist2/image/anonymousartists.jpg" alt="DJ Profile Image">
-										<h1 class="djTitle">HOT TRENDY: K-POP 신곡</h1>
-									</article>
-									<ul class="contact">
-										<li>
-											<i class="fa-regular fa-circle-user" style="color: rgb(85, 85, 85);"></i>
-											<span>K-POP마스터</span>
-										</li>
-										<li>
-											<i class="fa-regular fa-heart" style="color: rgb(85, 85, 85);"></i> <span>615</span> <span style="font-size: 10px;">| 200곡</span>
-										</li>
-									</ul>
-									<nav class="tags">
-										<a href="#" class="badge rounded-pill djTag">#휴식</a> 
-										<a href="#" class="badge rounded-pill djTag">#발라드</a>
-										<a href="#" class="badge rounded-pill djTag">#KPOP</a>
-									</nav>
-								</section>
-							</div> <!-- div.col-3 -->
-						</c:forEach>
-					</div> <!-- div.row -->
-				</div>
+				
 			</div>
 		</div>
 	</section>
-
+<!--
 	<section>
 		<div>
 			<h3>인기태그</h3>
@@ -106,7 +75,7 @@
 		</div>
 		<article>
 			<h5>이제 막 펼쳐진 가을의 첫 페이지</h5>
-			<!-- 이미지 대신 card가 들어갈 부분 -->
+		
 			<div class="row">
 				<%-- <c:forEach var="item" items="${객체 }"> --%>
 				<c:forEach begin="1" end="4" step="1">
@@ -115,7 +84,7 @@
 							<article class="profile">
 								<img class="djplayImg" src="/playlist2/image/blackBG.jpg" alt="DJ PlayList Image"> 
 								<img class="djprofileImg" src="/playlist2/image/anonymousartists.jpg" alt="DJ Profile Image">
-								<h1 class="djTitle">HOT TRENDY: K-POP 신곡</h1>
+								<h1 class="djTitle"> 신곡</h1>
 							</article>
 							<ul class="contact">
 								<li>
@@ -132,13 +101,13 @@
 								<a href="#" class="badge rounded-pill djTag">#KPOP</a>
 							</nav>
 						</section>
-					</div> <!-- div.col-3 -->
+					</div> 
 				</c:forEach>
-			</div> <!-- div.row -->
+			</div> 
 		</article>
 		<article>
 			<h5>장르별로 모아듣는 드라마 OST</h5>
-			<!-- 이미지 대신 card가 들어갈 부분 -->
+
 			<div class="row">
 				<%-- <c:forEach var="item" items="${객체 }"> --%>
 				<c:forEach begin="1" end="4" step="1">
@@ -164,8 +133,9 @@
 								<a href="#" class="badge rounded-pill djTag">#KPOP</a>
 							</nav>
 						</section>
-					</div> <!-- div.col-3 -->
+					</div> 
 				</c:forEach>
-			</div> <!-- div.row -->
+			</div> 
 		</article>
 	</section>
+  -->

@@ -16,6 +16,9 @@
 		select * from song_list where song_id = #{song_id};
 	</select>
 
+	<select id="selectDJPlayListList"  resultType="song.bean.SongPlaylistDTO">
+		select * from song_djplaylist;
+	</select>
 </mapper>
 
 

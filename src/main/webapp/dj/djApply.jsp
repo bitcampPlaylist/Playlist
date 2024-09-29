@@ -30,7 +30,7 @@
             <div class="content-wrapper">
                 <div class="a">
                     <div class="djTitleImg" >
-                     a  
+                     
                     </div>            
                 </div>
                 <div>

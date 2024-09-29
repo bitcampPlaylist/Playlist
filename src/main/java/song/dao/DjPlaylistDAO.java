@@ -55,5 +55,13 @@ public class DjPlaylistDAO {
 		SonglistDTO songlistDTO = sqlSession.selectOne("songSQL.selectSong", song_id);
 		return songlistDTO;
 	}
+// -----------------------------------------------------------
+	public List<SongPlaylistDTO> selectDJPlayListList() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<SongPlaylistDTO> list = new ArrayList<SongPlaylistDTO>();
+		list = sqlSession.selectList("songSQL.selectDJPlayListList");
+		sqlSession.close();
+		return list;
+	}
 	
 }
