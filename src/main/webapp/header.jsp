@@ -27,5 +27,8 @@
 	<!-- DJ -->
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/card.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/djToday.css">
+	<!--  -->
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/djApply.css">
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/djPlaylist.css">
 </head>
 <body>
