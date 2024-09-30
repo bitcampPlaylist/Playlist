@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="songSQL">
+
+	<select id="selectDJPlayList" parameterType="Integer" resultType="song.bean.SongPlaylistDTO">
+		select * from song_djplaylist where id=#{id};
+	</select>
+
+	<select id="selectSongDjList" parameterType="Integer" resultType="song.bean.SongDjList">
+		select song_id from SongDjList where djplaylist_id=#{id};
+	</select>
+	
+	<select id="selectSong" parameterType="Integer" resultType="songlist.bean.SonglistDTO">
+		select * from song_list where song_id = #{song_id};
+	</select>
+
+	<select id="selectDJPlayListList"  resultType="song.bean.SongPlaylistDTO">
+		select * from song_djplaylist;
+	</select>
+</mapper>
+
+
+
+
+
+
+
