@@ -2,11 +2,9 @@ package musicplayer.bean;
 
 import lombok.Getter;
 import lombok.Setter;
-import songlist.bean.SonglistDTO;
 
 @Getter
 @Setter
-
 public class Song {           
     private String songName;
     private String artistName; 
@@ -23,3 +21,4 @@ public class Song {
         this.songFile = songFile;
     }
 }
+

@@ -45,10 +45,10 @@ public class MemberDAO {
 		sqlSession.close();
 	}
 	
-	public MemberDTO login(String id, String pwd){
+	public MemberDTO login(String member_id, String member_pwd){
 		Map<String, String> map = new HashMap<>();
-		map.put("id", id);
-		map.put("pwd", pwd);
+		map.put("member_id", member_id);
+		map.put("member_pwd", member_pwd);
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.login", map);
