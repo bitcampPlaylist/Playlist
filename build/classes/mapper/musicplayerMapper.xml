@@ -3,8 +3,10 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="musicplayerSQL">
+	<select id="loadSong" parameterType="int" resultType="songlist.bean.SonglistDTO">
 		SELECT song_id, song_name, song_artist, song_albumart, song_file_name 
         FROM song_list WHERE song_id = #{song_id}
 	</select>
+	
 
 </mapper>

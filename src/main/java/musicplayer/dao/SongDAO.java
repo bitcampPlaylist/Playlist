@@ -33,9 +33,10 @@ public class SongDAO {
 		}
 	}
 
-    	System.out.println(song_id);
+    public SonglistDTO getSongById(int id) {
+    	System.out.println(id);
     	SqlSession sqlSession = sqlSessionFactory.openSession();
-        SonglistDTO songlistDTO = sqlSession.selectOne("musicplayerSQL.loadSong", song_id);
+        SonglistDTO songlistDTO = sqlSession.selectOne("musicplayerSQL.loadSong", id);
         System.out.println(songlistDTO);
         sqlSession.close();	
         return songlistDTO;

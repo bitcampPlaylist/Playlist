@@ -17,11 +17,13 @@ public class GetSongService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		//데이터
+		int id = Integer.parseInt(request.getParameter("song_id"));
+//		String id = request.getParameter("song_id");
 		
 		//DB
 		SongDAO songDAO = SongDAO.getInstance();
 		SonglistDTO songlistDTO = songDAO.getSongById(id);
-		//int song_id_int = songDAO.getSongById(id);
+//		int song_id_int = songDAO.getSongById(id);
 		
 		// JSON 형식으로 응답
 		response.setContentType("application/json");
