@@ -61,7 +61,6 @@
 
         <!-- 하단바(음악 재생 버튼) -->
         <%@ include file="/footer.jsp" %>
-    </div>
 <script src="${ pageContext.request.contextPath }/js/musicPlayer.js"></script>
 <script type="text/javascript">
 function register_page_move() {

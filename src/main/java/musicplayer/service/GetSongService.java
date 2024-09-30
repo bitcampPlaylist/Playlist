@@ -17,7 +17,6 @@ public class GetSongService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		//데이터
-		int id = Integer.parseInt(request.getParameter("song_id"));
 		
 		//DB
 		SongDAO songDAO = SongDAO.getInstance();

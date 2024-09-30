@@ -3,6 +3,8 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="songlistSQL">
-
+	<select id="getAllSong" parameterType="string" resultType="songupload.bean.SonguploadDTO">
+	    SELECT * FROM SONG_LIST
+	</select>
 
 </mapper>

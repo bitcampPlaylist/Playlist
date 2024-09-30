@@ -13,13 +13,22 @@
 </head>
 <body>
 
-	<div id="playlistPopup">
-    <h1 style="text-align: center">
-    ~~의 <br>
-    플레이리스트</h1>
+
+    <div id="playlistPopup">
+        <h1 style="text-align: center">
+            플레이리스트
+        </h1>
 		<ul id="playlist">
+		    <c:forEach var="song" items="${songList}">
+		        <li data-song-id="${song.song_id}">
+		            <a href="#" class="song-item" data-song-url="${pageContext.request.contextPath}/storage/music/${song.song_file_name}">
+		            <strong>${song.song_name}</strong> - ${song.song_artist} <br>
+<%-- 		            <small>${song.song_album}</small> --%>
+					</a>
+		        </li>
+		    </c:forEach>
 		</ul>
-	</div>
+    </div>
 	
 	<input type="hidden" name="song_id" value="${SonglistDTO.song_id }" />	
 	
@@ -109,7 +118,7 @@ $(function() {
             }
         }
         //노래 정보 업데이트
-        updateSongInfo();
+//         updateSongInfo();
         audioPlayer.play();
         $('#playBtn').hide();
         $('#pauseBtn').show();
@@ -123,16 +132,120 @@ $(function() {
             currentSongIndex = songs.length - 1;
         }
         //노래 정보 업데이트
-        updateSongInfo();
+//         updateSongInfo();
         audioPlayer.play();
         $('#playBtn').hide();
         $('#pauseBtn').show();
         startTimeUpdate();
     });
    
-    updateSongInfo();
+//     updateSongInfo();
 
- 
+
+});
+
+$(function() {
+    // 플레이리스트 가져오는 버튼 이벤트
+	$(function() {
+        $('#playlistBtn').click(function() {
+            $('#playlistPopup').show();
+            
+            var contextPath = '<%= request.getContextPath() %>';
+            $.ajax({
+                url: contextPath + '/musicplayer/getAllSongs.do',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                	var playlist = $('#playlist');
+                    playlist.empty();
+                    $.each(data, function(index, song) {
+//                         playlist.append('<li><strong>' + song.song_name + '</strong> - ' + song.song_artist + '<br></li>');
+                        playlist.append('<li><a href="#" class="song-item" data-song-url="' + contextPath + '/storage/music/' + song.song_file_name + '"><strong>' + song.song_name + '</strong> - ' + song.song_artist + '<br>' + '</a></li>');
+
+                    });
+                },
+                error: function() {
+                }
+            });
+        });
+
+     // 노래 클릭 이벤트 처리
+	 $('#playlist').on('click', 'li', function() {
+		    var songId = $(this).data('song-id'); // 클릭한 노래의 song_id 가져오기
+			var contextPath = '${pageContext.request.contextPath}';
+
+            $.ajax({
+                url: contextPath + '/musicplayer/getSong.do',
+                type: 'GET',
+                data: { song_id: songId },
+                dataType: 'json',
+                success: function(data) {
+                    var imageUrl = "https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/album/" + data.song_albumart;
+                    var audioUrl = "https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/music/" + data.song_file_name;
+
+                    // 노래 정보를 업데이트
+                    $('#songName a').text(data.song_name);
+                    $('#artistName a').text(data.song_artist);
+
+                    // 앨범 아트를 업데이트
+                    var albumArtDiv = document.getElementById("albumart_src");
+                    while (albumArtDiv.firstChild) {
+                        albumArtDiv.removeChild(albumArtDiv.firstChild);
+                    }
+                    var imgElement = document.createElement("img");
+                    imgElement.src = imageUrl;
+                    imgElement.alt = "앨범 아트";
+                    imgElement.style.width = "100%";
+                    imgElement.style.height = "auto";
+                    albumArtDiv.appendChild(imgElement);
+
+                    // 오디오 소스를 설정하고 재생
+                    var audioPlayer = $('#audioPlayer')[0];
+                    audioPlayer.src = audioUrl;
+                    audioPlayer.play().then(() => {
+                        $('#playBtn').hide();
+                        $('#pauseBtn').show();
+                    }).catch((error) => {
+                        console.error('오디오 재생 중 오류 발생:', error);
+                    });
+
+                    // DOM에서 직접 노래 이름과 아티스트 이름 가져오기
+                    const songName = $('#songName a').text(); // 노래 이름 텍스트 가져오기
+                    const artistName = $('#artistName a').text(); // 아티스트 이름 텍스트 가져오기
+
+                    // 재생 목록 업데이트
+                    updatePlaylist(songName, artistName, imageUrl, songId);
+                },
+                error: function(e) {
+                    console.log('노래 데이터 가져오는 중 오류 발생:', e);
+                }
+            });
+        });
+
+        // 재생/일시정지 버튼 이벤트
+        $('#playBtn').click(function() {
+            $('#audioPlayer')[0].play();
+            $(this).hide();
+            $('#pauseBtn').show();
+        });
+
+        $('#pauseBtn').click(function() {
+            $('#audioPlayer')[0].pause();
+            $(this).hide();
+            $('#playBtn').show();
+        });
+
+        // 팝업 닫기 버튼 이벤트
+        $('#closePopupBtn').click(function() {
+            $('#playlistPopup').hide();
+        });
+
+        // 재생 목록 업데이트 함수
+        function updatePlaylist(songName, artistName, imageUrl, songId) {
+            // 여기에서 재생 목록을 업데이트할 수 있는 코드를 작성하세요.
+            console.log('재생 목록 업데이트:', songName, artistName, imageUrl, songId);
+        }
+    });
 });
 
 </script>
