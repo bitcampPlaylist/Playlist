@@ -66,7 +66,8 @@
                         </td>
                         <td>${dto.song_id}</td>
                         <td style="height: 150px;">
-                            <img src="http://db-pf267-kr.vpc-pub-cdb.ntruss.com:3306/projectMVC/storage/image/${dto.song_albumart}" alt="">f
+                            <img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/album/${dto.song_albumart}" alt="" width="100px" height="100px" 
+                            style="border: 1px solid black">
                         </td>
                         <td>${dto.song_name}</td>
                         <td>${dto.song_album}</td>
