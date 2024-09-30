@@ -1,6 +1,5 @@
 package songlist.bean;
 
-
 import java.util.Date;
 
 import lombok.Getter;

@@ -21,7 +21,6 @@ body, html{
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
 }
 
 /* 메인 콘텐츠가 화면의 남은 공간을 차지하도록 설정 */
@@ -101,6 +100,7 @@ button {
     height: 40px;
     display: flex;
     justify-content: center;
+    font-size: 0.9em;
     align-items: center;
     white-space: nowrap;
 }

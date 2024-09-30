@@ -12,10 +12,25 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+
+	<div id="playlistPopup">
+    <h1 style="text-align: center">
+    ~~의 <br>
+    플레이리스트</h1>
+		<ul id="playlist">
+		</ul>
+	</div>
+	
+	<input type="hidden" name="song_id" value="${SonglistDTO.song_id }" />	
+	
 	<div id="musicPlayerContainer">
 		<!-- songInfo div -->
 		<div id="songInfo">
-			<div id="albumArt"><img src=""></div>
+			<div id="albumArt">
+			<div id="albumart_src">
+			</div>
+			<!--  <img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-144/storage/album/${SonglistDTO.song_albumart }"> -->
+			</div>
 			<div class="songDetails">
 				<div id="songName"><a href="#"></a></div>
 				<div id="artistName"><a href="#"></a></div>
@@ -47,16 +62,16 @@
 
 		<!-- volumeController -->
 		<div id="volumeController">
-			<i class="bi bi-list"><a href="#"></a></i> <i
-				class="bi bi-volume-down"></i>
+			<i class="bi bi-list" id="playlistBtn"></i> 
+			<i class="bi bi-volume-down"></i>
 			<div id="volumeSliderContainer">
 				<span id="volumeBar"> <span id="volumeFill"></span>
 				</span> <input id="volumeSlider" type="range" min="0" max="100" value="50">
 			</div>
 		</div>
 	</div>
-
-	<audio id="audioPlayer" src=""></audio>
+	
+	<audio id="audioPlayer"></audio>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -64,102 +79,10 @@
 $(function() {
 	const audioPlayer = $('#audioPlayer')[0];
 	
-	//노래 (로컬)
-    const songs = [
-    	{
-    		path:  '../music/iCantDream.mp3',
-    		displayName: 'I Can\'t Dream',
-    		cover: '../image/anonymousartists.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:   '../music/thatsNotIt.mp3',
-    		displayName: '그게 아니라..',
-    		cover: '../image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  '../music/youJumpIJump.mp3',
-    		displayName: 'you jump, i jump',
-    		cover: '../image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  '../music/magneticRemix.mp3',
-    		displayName: 'Magnetic(Remix)',
-    		cover: '../image/ooo.jpg',
-    		artist: 'Illit, MINDA',
-    	},
-    	{
-    		path:  '../music/someoneElse.mp3',
-    		displayName: 'SomeOneelSe',
-    		cover: '../image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  '../music/shutUp.mp3',
-    		displayName: 'shut up!',
-    		cover: '../image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    	{
-    		path:  '../music/drift.mp3',
-    		displayName: 'Drift',
-    		cover: '../image/ooo.jpg',
-    		artist: 'MINDA',
-    	},
-    ];
-	
-    let currentSongIndex = 0;
-    let isShuffle = false;
-    let isRepeat = false;  
+    let currentSongIndex = 0;  
     let playedSongs = [];
     let timeInterval;
     
-    //음악 플레이어 정보 업데이트
-    function updateSongInfo() {
-        const currentSong = songs[currentSongIndex];
-        $('#albumArt img').attr('src', currentSong.cover);
-        $('#songName a').text(currentSong.displayName);
-        $('#artistName a').text(currentSong.artist);      
-		audioPlayer.src = currentSong.path;
-		
-		$('#currentTime').text('00:00');
-        audioPlayer.onloadedmetadata = function() {
-            const totalDuration = audioPlayer.duration;
-            $('#totalTime').text(formatTime(totalDuration));
-            $('#timeSlider').attr('max', totalDuration);
-        };
-        
-     	// Update the time slider as the song plays
-        $('#timeSlider').off('input').on('input', function() {
-            const value = $(this).val();
-            audioPlayer.currentTime = value; // Set audio currentTimeupdateTimeFill();
-            updateTimeFill();
-        });
-    }
-    
- 	// Format time function
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return String(minutes).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-    }
-
-    $('#playBtn').click(function() {
-        audioPlayer.play();
-        $('#playBtn').hide();
-        $('#pauseBtn').show();
-        startTimeUpdate();
-    });
-	
-    $('#pauseBtn').click(function() {
-        audioPlayer.pause();
-        $('#playBtn').show();
-        $('#pauseBtn').hide();
-        clearInterval(timeInterval); // Clear the interval when paused
-    });
-	
     //다음 노래 버튼 
     $('#nextSongBtn').click(function() {
         if (isRepeat) {
@@ -206,54 +129,10 @@ $(function() {
         $('#pauseBtn').show();
         startTimeUpdate();
     });
-    
-    //셔플 function
-    $('#shuffleBtn').click(function() {
-        isShuffle = !isShuffle; //셔플 on
-        $(this).toggleClass('active'); //css 초록색 빛
-        
-        //셔플 on -> 반복 off
-        if (isShuffle) {
-            isRepeat = false;
-            $('#repeatBtn').removeClass('active'); //css 초록색 빛 없애기
-        }
-    });
-
-    //반복 function
-    $('#repeatBtn').click(function() {
-        isRepeat = !isRepeat; //반복 on
-        $(this).toggleClass('active'); //css 초록색 빛
-
-        //반복 on -> 셔플 off
-        if (isRepeat) {
-            isShuffle = false;
-            $('#shuffleBtn').removeClass('active'); //css 초록색 빛 없애기
-        }
-    });
-    
-    const $volumeSlider = $('#volumeSlider');
-    const $volumeFill = $('#volumeFill');	
- 	// Add an event listener to update the fill width when the slider value changes
-    $volumeSlider.on('input', function() {
-        const volumeValue = $(this).val();  // Get the current slider value (0 to 100)
-        audioPlayer.volume = volumeValue / 100;  // Update the audio volume as well (0 to 1 scale)
-        $volumeFill.css('width', volumeValue + '%');  // Update the fill width based on the thumb position
-    });
- 	
+   
     updateSongInfo();
-    
-	 // Function to update current time and slider
-    function startTimeUpdate() {
-        clearInterval(timeInterval); // Clear previous interval
-        timeInterval = setInterval(() => {
-            $('#currentTime').text(formatTime(audioPlayer.currentTime)); // Update current time display
-            $('#timeSlider').val((audioPlayer.currentTime / audioPlayer.duration) * 100); // Update time slider
-            
-            // Update timeFill width based on currentTime
-            const fillWidth = (audioPlayer.currentTime / audioPlayer.duration) * 100; // Calculate fill width percentage
-            $('#timeFill').css('width', fillWidth + '%'); // Update timeFill width
-        }, 1000); // Update every second
-    }
+
+ 
 });
 
 </script>

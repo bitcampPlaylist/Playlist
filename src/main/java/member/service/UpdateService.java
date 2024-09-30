@@ -23,23 +23,23 @@ public class UpdateService implements CommandProcess {
 		String tel1 = request.getParameter("tel1");
 		String tel2 = request.getParameter("tel2");
 		String tel3 = request.getParameter("tel3");
-		String zipcode = request.getParameter("zipcode");
+		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
 		String addr1 = request.getParameter("addr1");
 		String addr2 = request.getParameter("addr2");
 		
 		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setName(name);
-		memberDTO.setId(id);
-		memberDTO.setPwd(pwd);
-		memberDTO.setGender(gender);
-		memberDTO.setEmail1(email1);
-		memberDTO.setEmail2(email2);
-		memberDTO.setTel1(tel1);
-		memberDTO.setTel2(tel2);
-		memberDTO.setTel3(tel3);
-		memberDTO.setZipcode(zipcode);
-		memberDTO.setAddr1(addr1);
-		memberDTO.setAddr2(addr2);
+		memberDTO.setMember_name(name);
+		memberDTO.setMember_id(id);
+		memberDTO.setMember_pwd(pwd);
+		memberDTO.setMember_gender(gender);
+		memberDTO.setMember_email1(email1);
+		memberDTO.setMember_email2(email2);
+		memberDTO.setMember_tel1(tel1);
+		memberDTO.setMember_tel2(tel2);
+		memberDTO.setMember_tel3(tel3);
+		memberDTO.setMember_zipcode(zipcode);
+		memberDTO.setMember_addr1(addr1);
+		memberDTO.setMember_addr2(addr2);
 		
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.update(memberDTO);

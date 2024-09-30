@@ -1,89 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-table {
-	border-collapse: collapse;
-}
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-th, td {
-	padding: 5px;
-}
 
-#loginForm {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 30px auto;
-	text-align: left;
-}
 
-#loginForm div {
-	color: red;
-	font-size: 8pt;
-	font-weight: bold;
-}
-</style>
-</head>
-<body>
-<form id="loginForm">
-	<h1>
-		<img src="../image/4.jpg" width="100" height="100" alt="홈" 
-			 onclick="location.href='${ pageContext.request.contextPath }/index.do'" style="cursor: pointer;"> 로그인
-	</h1>
-	<table border="1">
-		<tr>
-	        <th>아이디</th>
-	        <td>
-	        	<input type="text" name="id" id="id" size="30" placeholder="아이디 입력">
-	        	<div id="idDiv"></div>
-	        </td>
-	    </tr>
-	    
-	    <tr>
-	        <th>비밀번호</th>
-	        <td>
-	        	<input type="password" name="pwd" id="pwd" size="40" placeholder="비밀번호 입력">
-	        	<div id="pwdDiv"></div>
-	        </td>
-	    </tr>
-	    
-	    <tr>
-	    	<td colspan="2" align="center">
-	    		<input type="button" value="로그인" id="loginBtn"/>
-	    		<input type="button" value="회원가입" 
-	    		onclick="location.href='${ pageContext.request.contextPath }/member/writeForm.do'" />      
-	    	</td>
-	    </tr>
-	</table>
-	
-	<div id="loginResult"></div>
-</form>
+<div class="d-flex justify-content-center align-items-center">
+    <form id="loginForm" class="bg-light p-4 rounded shadow" style="width: 100%; max-width: 400px; margin-top: 200px;">
+        <div class="text-center mb-4 d-flex flex-column align-items-center">
+		    <h1 class="d-flex align-items-center">
+                <img src="${ pageContext.request.contextPath }/image/login.png" width="50" height="50" alt="홈"
+		             onclick="location.href='${ pageContext.request.contextPath }/index.do'" 
+		             style="cursor: pointer;">
+		        <span class="ms-3 align-middle">로그인</span>
+		    </h1>
+		</div>
 
+        <div class="mb-3">
+            <label for="id" class="form-label">아이디</label>
+            <input type="text" class="form-control" name="member_id" id="member_id" placeholder="아이디 입력">
+            <div id="idDiv" class="form-text text-danger"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="pwd" class="form-label">비밀번호</label>
+            <input type="password" class="form-control" name="member_pwd" id="member_pwd" placeholder="비밀번호 입력">
+            <div id="pwdDiv" class="form-text text-danger"></div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-primary me-2" id="loginBtn">로그인</button>
+            <button type="button" class="btn btn-secondary" onclick="register_page_move()">
+                회원가입
+            </button>
+        </div>
+
+        <div id="loginResult" class="mt-3 text-center"></div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#loginBtn').click(function(){
-		$('#idDiv').empty();
+		$('#member_idDiv').empty();
 		$('#pwdDiv').empty();
 		
-		if($('#id').val() == '')
-			$('#idDiv').html('아이디 입력');
-		else if($('#pwd').val() == '')
-			$('#pwdDiv').html('비밀번호 입력');
+		if($('#member_id').val() == '')
+			$('#member_idDiv').html('아이디를 입력하세요');
+		else if($('#member_pwd').val() == '')
+			$('#pwdDiv').html('비밀번호를 입력하세요');
 		else
 			$.ajax({
 				type: 'post',
 				url: '${ pageContext.request.contextPath }/member/login.do',
 				
-				//data: 'id=' + $('#id').val() + '&pwd=' + $('#pwd').val(),
+				//data: 'id=' + $('#member_id').val() + '&pwd=' + $('#pwd').val(),
 				data: {
-					'id': $('#id').val(),
-					'pwd': $('#pwd').val()
+					'member_id': $('#member_id').val(),
+					'member_pwd': $('#member_pwd').val()
 				},
 			
 				dataType: 'text', //서버로부터 받는 타입, 'text' or 'xml' or 'json'
@@ -97,7 +72,7 @@ $(function(){
 					
 					} else {
 						//alert(data.trim()+"님 로그인");						
-						location.href = '/projectMVC/index.do';
+						location.href = '/playlist2/index.do';
 					}
 				},
 				error: function(e){
@@ -107,8 +82,7 @@ $(function(){
 	});
 });
 </script>
-</body>
-</html>
+
 
 
 

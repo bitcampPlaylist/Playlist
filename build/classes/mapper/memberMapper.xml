@@ -3,67 +3,68 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberSQL">
+
 	<!-- 아이디 중복 체크 -->
 	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
-		select * from member where id=#{id}
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id}
 	</select>
 	
 	<!-- 회원가입 -->
 	<insert id="write" parameterType="member">
-		INSERT INTO member(name
-						 , id
-						 , pwd
-						 , gender
-						 , email1
-						 , email2
-						 , tel1
-						 , tel2
-						 , tel3
-						 , zipcode
-						 , addr1
-						 , addr2
-						 , logtime)
-        			VALUES(#{name}
-        				 , #{register_id}
-        				 , #{pwd}
-        				 , #{gender}
-        				 , #{email1}
-        				 , #{email2}
-        				 , #{tel1}
-        				 , #{tel2}
-        				 , #{tel3}
-        				 , #{zipcode}
-        				 , #{addr1}
-        				 , #{addr2}
-        				<!--  , SYSDATE) -->
-        				 , now())
+		INSERT INTO SONG_MEMBER(MEMBER_NAME
+						 , MEMBER_ID
+						 , MEMBER_PASSWORD
+						 , MEMBER_GENDER
+						 , MEMBER_EMAIL1
+						 , MEMBER_EMAIL2
+						 , MEMBER_TEL1
+						 , MEMBER_TEL2
+						 , MEMBER_TEL3
+						 , MEMBER_ZIPCODE
+						 , MEMBER_ADDRESS1
+						 , MEMBER_ADDRESS2
+						 , MEMBER_REGISTER_DATE)
+					VALUES(#{member_name}
+					     , #{member_id}
+					     , #{member_pwd}
+					     , #{member_gender}
+					     , #{member_email1}
+					     , #{member_email2}
+					     , #{member_tel1}
+					     , #{member_tel2}
+					     , #{member_tel3}
+					     , #{member_zipcode}
+					     , #{member_addr1}
+					     , #{member_addr2}
+					     , now())
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="login" parameterType="java.util.Map" resultType="member">
-		select * from member where id=#{id} and pwd=#{pwd}
+	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id} and MEMBER_PASSWORD=#{member_pwd}
 	</select>
 	
 	<!-- id에 해당하는 정보 가져오기 -->
 	<select id="getMember" parameterType="String" resultType="member">
-		select * from member where id=#{id}
+		select * from SONG_MEMBER where MEMBER_ID=#{member_id}
 	</select>
-	
+
 	<!-- 회원정보수정 -->
 	<update id="update" parameterType="member">
-		update member set name = #{name}
-			            , pwd = #{pwd}
-			            , gender = #{gender}
-			            , email1 = #{email1}
-			            , email2 = #{email2}
-			            , tel1 = #{tel1}
-			            , tel2 = #{tel2}
-			            , tel3 = #{tel3}
-			            , zipcode = #{zipcode}
-			            , addr1 = #{addr1}
-			            , addr2 = #{addr2}
+		update member set name = #{member_name}
+					     , #{member_id}
+					     , #{member_pwd}
+					     , #{member_gender}
+					     , #{member_email1}
+					     , #{member_email2}
+					     , #{member_tel1}
+					     , #{member_tel2}
+					     , #{member_tel3}
+					     , #{member_zipcode}
+					     , #{member_addr1}
+					     , #{member_addr2}
 			            <!-- , logtime = sysdate where id = #{id} -->
-			            , logtime = now() where id = #{id}
+			            , logtime = now() where id = #{member_id}
 	</update>
 </mapper>
 
