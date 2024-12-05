@@ -8,18 +8,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemberDTO {
-	private String name;
-	private String id;
-	private String pwd;
-	private String gender;
-	private String email1;
-	private String email2;
-	private String tel1;
-	private String tel2;
-	private String tel3;
-	private String zipcode;
-	private String addr1;
-	private String addr2;
-	private Date logtime;
-
+    private String member_name;
+    private String member_id;
+    private String member_pwd;
+    private String member_gender;
+    private String member_email1;
+    private String member_email2;
+    private String member_tel1;
+    private String member_tel2;
+    private String member_tel3;
+    private int member_zipcode;
+    private String member_addr1;
+    private String member_addr2;
+    private Date member_logtime;
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="songuploadSQL">
+	<!-- 이미지 등록 -->
+	<insert id="fileupload" parameterType="song">
+			INSERT INTO SONG_LIST(
+					    SONG_NAME 
+					    ,SONG_ARTIST 
+					    ,SONG_ALBUM 
+					    ,SONG_TAG 
+					    ,SONG_TRAKNUM 
+					    ,SONG_TITLEYN 
+					    ,SONG_PLAYCOUNT 
+					    ,SONG_UPLOADDATE 
+					    ,SONG_FILE_NAME
+					    ,SONG_ALBUMART 
+					) VALUES(
+						#{song_name}
+						, #{song_artist}
+						, #{song_album}
+						, #{song_tag}
+						, #{song_traknum}
+						, IFNULL(#{titleyn},0)
+						, #{song_playcount}
+						, (current_date)
+						, #{song_file_name}
+						, #{song_albumart}
+						)
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
